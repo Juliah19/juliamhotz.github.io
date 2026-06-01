@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Therapy Journey — Julia Hotzinger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:              #F8F7F2;
+    --surface:         #FFFFFF;
+    --surface-2:       #F2F0EA;
+
+    --text-0:          #0A0907;
+    --text-primary:    #18160E;
+    --text-secondary:  #2E2B24;
+    --text-tertiary:   #7A756C;
+
+    --terra:           #2B3270;
+    --terra-mid:       #5560A0;
+    --terra-light:     #E4E6F5;
+    --terra-subtle:    #F2F3FA;
+
+    --sage:            #C03A6A;
+    --sage-light:      #FAE0EC;
+    --sage-mid:        #D480A0;
+
+    --amber:           #B8891E;
+    --amber-mid:       #D4AA5A;
+    --amber-light:     #F5EDD8;
+
+    --border:          #E2DDD7;
+    --border-strong:   #C4BDB5;
+    --transition:      0.18s ease;
+    --max:             800px;
+    --wide:            1100px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(248,247,243,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-back {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--text-secondary);
+    text-decoration: none; transition: color var(--transition);
+  }
+  .nav-back:hover { color: var(--text-primary); }
+  .nav-back svg { transition: transform var(--transition); }
+  .nav-back:hover svg { transform: translateX(-3px); }
+  .nav-jump {
+    font-size: 13px; font-weight: 500;
+    color: var(--surface);
+    background: var(--text-primary);
+    padding: 7px 16px; border-radius: 40px;
+    text-decoration: none;
+    transition: background var(--transition);
+  }
+  .nav-jump:hover { background: var(--sage); }
+
+  /* ── LAYOUT ── */
+  .contained { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+  .wide      { max-width: var(--wide); margin: 0 auto; padding: 0 40px; }
+
+  /* ── SECTION RHYTHM ── */
+  .cs-section { padding: 72px 0; border-top: 1px solid var(--border); }
+
+  .section-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: block;
+    width: 20px; height: 1px; background: var(--border-strong);
+  }
+
+  /* ── HERO ── */
+  .cs-hero {
+    padding: 80px 40px 64px;
+    max-width: var(--wide); margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 400px; gap: 60px; align-items: start;
+  }
+  .cs-hero-tag {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 16px;
+  }
+  .cs-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(34px, 4.5vw, 52px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--text-0);
+    margin-bottom: 20px;
+  }
+  .cs-hero h1 em { font-style: italic; font-weight: 700; color: var(--terra); }
+  .cs-hero-summary {
+    font-size: 18px; font-weight: 300;
+    color: var(--text-secondary); line-height: 1.75;
+    max-width: 520px; margin-bottom: 32px;
+  }
+  .jump-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600;
+    color: var(--surface);
+    background: var(--text-0);
+    padding: 10px 20px; border-radius: 40px;
+    text-decoration: none;
+    transition: background var(--transition);
+  }
+  .jump-btn:hover { background: var(--terra); }
+
+  /* ── IMPACT BOX ── */
+  .impact-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    position: sticky; top: 80px;
+  }
+  .impact-box-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 20px;
+  }
+  .impact-stats { display: flex; flex-direction: column; gap: 20px; }
+  .impact-stat {
+    display: flex; flex-direction: column; gap: 3px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .impact-stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .impact-number {
+    font-family: 'Lora', serif;
+    font-size: 34px; font-weight: 700;
+    color: var(--text-0); line-height: 1;
+  }
+  .impact-desc { font-size: 14px; color: var(--text-secondary); font-weight: 300; }
+
+  /* ── CONTEXT STRIP ── */
+  .context-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .context-inner {
+    max-width: var(--wide); margin: 0 auto; padding: 0 40px;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+  }
+  .context-cell {
+    padding: 24px 28px;
+    border-right: 1px solid var(--border);
+  }
+  .context-cell:first-child { padding-left: 0; }
+  .context-cell:last-child  { border-right: none; }
+  .context-key {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 6px;
+  }
+  .context-val { font-size: 14px; color: var(--text-primary); line-height: 1.5; }
+
+  /* ── PROSE ── */
+  .prose { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+  .prose h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px; font-weight: 700;
+    letter-spacing: -0.025em; line-height: 1.15;
+    color: var(--text-0); margin-bottom: 20px;
+  }
+  .prose p {
+    font-size: 18px; font-weight: 300;
+    color: var(--text-secondary); line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .prose strong { font-weight: 600; color: var(--text-primary); }
+
+  /* ── MBC FLYWHEEL ── */
+  .flywheel-panel {
+    background: var(--terra-subtle);
+    border: 1px solid var(--terra-light);
+    border-radius: 14px;
+    padding: 36px 40px;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .flywheel-panel p {
+    font-size: 17px; font-weight: 300;
+    color: var(--text-secondary); line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .flywheel-panel p:last-child { margin-bottom: 0; }
+  .flywheel-panel strong { font-weight: 600; color: var(--text-primary); }
+  .flywheel-panel em { font-style: italic; }
+
+  /* ── TRIPTYCH ── */
+  .triptych {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .triptych-cell { background: var(--surface); padding: 32px; }
+  .triptych-type {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .triptych-type.biz  { color: var(--sage); }
+  .triptych-type.user { color: var(--terra); }
+  .triptych-type.tech { color: var(--amber); }
+  .triptych-cell h3 {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 600;
+    line-height: 1.3; margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+  .triptych-cell p { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
+  .triptych-reframe {
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    padding: 20px 32px;
+    grid-column: 1 / -1;
+  }
+  .triptych-reframe p {
+    font-size: 15px; color: var(--text-secondary);
+    font-style: italic; font-weight: 300; line-height: 1.7;
+    padding-left: 20px;
+    border-left: 2px solid var(--sage-mid);
+  }
+
+  /* ── RESEARCH ── */
+  .research-rounds {
+    display: flex; flex-direction: column; gap: 32px;
+    max-width: var(--max); margin: 0 auto; padding: 0 40px;
+  }
+  .research-round {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px;
+  }
+  .round-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 8px;
+  }
+  .research-round h3 {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 600;
+    line-height: 1.3; margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+  .research-round p {
+    font-size: 15px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .research-round p:last-child { margin-bottom: 0; }
+  .finding-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 8px;
+    margin-bottom: 16px;
+  }
+  .finding-list li {
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 15px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.65;
+  }
+  .finding-list li::before {
+    content: '→';
+    color: var(--terra-mid);
+    font-weight: 500; flex-shrink: 0;
+  }
+  .pull-quote {
+    padding: 16px 20px;
+    background: var(--bg);
+    border-left: 3px solid var(--sage-mid);
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+    font-size: 15px; font-style: italic;
+    color: var(--text-secondary); font-weight: 300;
+    line-height: 1.7;
+  }
+  .research-gap {
+    background: var(--amber-light);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 20px;
+    font-size: 14px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.65;
+  }
+  .research-gap strong { font-weight: 600; color: var(--amber); }
+
+  /* ── 50-TO-5 FUNNEL ── */
+  .funnel-section { padding: 72px 0; border-top: 1px solid var(--border); }
+  .funnel-intro {
+    max-width: var(--max); margin: 0 auto; padding: 0 40px;
+    margin-bottom: 40px;
+  }
+  .funnel-intro h2 {
+    font-family: 'Lora', serif;
+    font-size: 28px; font-weight: 700;
+    letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .funnel-intro p {
+    font-size: 15px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.7;
+  }
+  .funnel-list {
+    max-width: var(--max); margin: 0 auto; padding: 0 40px;
+    display: flex; flex-direction: column;
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .funnel-row {
+    background: var(--surface);
+    padding: 22px 28px;
+    display: grid; grid-template-columns: 180px 1fr;
+    gap: 24px; align-items: start;
+  }
+  .funnel-row.killed { opacity: 0.65; }
+  .funnel-tag {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 40px;
+    display: inline-flex; align-items: center; gap: 6px;
+    white-space: nowrap; align-self: start; margin-top: 2px;
+  }
+  .funnel-tag.killed-tag { background: var(--terra-light); color: var(--terra); }
+  .funnel-tag.shipped-tag { background: var(--sage-light); color: var(--sage); }
+  .funnel-row-title {
+    font-size: 15px; font-weight: 600;
+    color: var(--text-primary); margin-bottom: 5px;
+  }
+  .funnel-row-reason {
+    font-size: 14px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.65;
+  }
+
+  /* ── SOLUTION ANNOTATION ── */
+  .annotation-row {
+    max-width: var(--wide); margin: 0 auto; padding: 0 40px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: center;
+  }
+  .annotation-stacked {
+    max-width: var(--max); margin: 0 auto; padding: 0 40px;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  .annotation-text { display: flex; flex-direction: column; }
+  .annotation-number {
+    font-family: 'Lora', serif;
+    font-size: 48px; font-weight: 400;
+    color: var(--border); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .annotation-title {
+    font-family: 'Lora', serif;
+    font-size: 18px; font-weight: 600;
+    line-height: 1.3; margin-bottom: 10px;
+  }
+  .annotation-desc {
+    font-size: 16px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.75;
+  }
+  .annotation-cost {
+    margin-top: 12px;
+    font-size: 13px; color: var(--text-tertiary);
+    font-style: italic; font-weight: 300;
+    padding-top: 12px; border-top: 1px solid var(--border);
+  }
+
+  /* ── MEDIA ── */
+  .media-frame { max-width: var(--wide); margin: 0 auto; padding: 0 40px; }
+  .media-full {
+    width: 100%; border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden; background: var(--surface);
+    display: block;
+  }
+  .media-full img {
+    width: 100%; display: block;
+    border-radius: 12px;
+  }
+  .media-half {
+    border-radius: 10px; border: 1px solid var(--border);
+    overflow: hidden; background: var(--surface);
+    display: block;
+  }
+  .media-half img {
+    width: 100%; display: block;
+  }
+  /* Mobile screenshot wrapper — adds a colored bg + padding for portrait screens */
+  .mobile-wrap {
+    background: var(--terra-subtle);
+    border-radius: 16px;
+    padding: 24px 32px;
+    display: flex; justify-content: center; align-items: flex-start;
+    border: 1px solid var(--terra-light);
+    overflow: hidden;
+  }
+  .mobile-wrap img {
+    width: 100%; max-width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    display: block;
+  }
+  /* Desktop screenshot — fills the frame */
+  .desktop-wrap {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: var(--surface-2);
+  }
+  .desktop-wrap img {
+    width: 100%; display: block;
+  }
+  /* Design artifact — light bg, padding */
+  .artifact-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    overflow: hidden;
+  }
+  .artifact-wrap img {
+    width: 100%; display: block; border-radius: 8px;
+  }
+  /* Multi-mobile row: side-by-side phones */
+  .mobile-row {
+    display: flex; gap: 16px; justify-content: center; align-items: flex-start;
+    background: var(--terra-subtle);
+    border: 1px solid var(--terra-light);
+    border-radius: 16px; padding: 28px 24px;
+  }
+  .mobile-row img {
+    flex: 1; max-width: 220px; min-width: 0;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+    display: block;
+  }
+  .media-caption {
+    font-size: 12px; color: var(--text-tertiary);
+    font-weight: 300; margin-top: 10px; text-align: center;
+    font-style: italic;
+  }
+
+  /* ── MESSY MIDDLE ── */
+  .messy-grid {
+    max-width: var(--wide); margin: 0 auto; padding: 0 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .messy-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px;
+  }
+  .messy-tag {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 12px;
+  }
+  .messy-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 16px; font-weight: 500;
+    line-height: 1.4; margin-bottom: 10px;
+  }
+  .messy-card p {
+    font-size: 15px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.75;
+  }
+
+  /* ── IMPACT FINAL ── */
+  .impact-final {
+    background: linear-gradient(150deg, #EFF4F2 0%, #F7F3EF 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 72px 0;
+  }
+  .impact-grid {
+    max-width: var(--wide); margin: 32px auto 0; padding: 0 40px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .impact-cell { background: var(--surface); padding: 28px 24px; }
+  .impact-metric {
+    font-family: 'Lora', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--text-primary); line-height: 1;
+    margin-bottom: 6px;
+  }
+  .impact-metric-label {
+    font-size: 13px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.4;
+  }
+  .impact-metric-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; }
+  .qual-quotes {
+    max-width: var(--max); margin: 32px auto 0; padding: 0 40px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .qual-quote {
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    border-left: 3px solid var(--sage-mid);
+  }
+  .qual-quote p {
+    font-size: 16px; color: var(--text-secondary);
+    font-style: italic; font-weight: 300; line-height: 1.75;
+    margin-bottom: 8px;
+  }
+  .qual-source { font-size: 11px; color: var(--text-tertiary); font-weight: 500; letter-spacing: 0.04em; }
+  .directional-note {
+    max-width: var(--max); margin: 24px auto 0; padding: 0 40px;
+    font-size: 14px; color: var(--text-tertiary);
+    font-weight: 300; line-height: 1.65; font-style: italic;
+  }
+
+  /* ── LEARNINGS ── */
+  .learnings-grid {
+    max-width: var(--max); margin: 0 auto; padding: 0 40px;
+    display: flex; flex-direction: column; gap: 24px;
+  }
+  .learning { display: grid; grid-template-columns: 28px 1fr; gap: 16px; align-items: start; }
+  .learning-num {
+    font-family: 'Lora', serif;
+    font-size: 13px; color: var(--text-tertiary);
+    padding-top: 3px;
+  }
+  .learning h3 {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 500;
+    line-height: 1.35; margin-bottom: 8px;
+  }
+  .learning p { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
+
+  /* ── NEXT UP + FOOTER ── */
+  .next-up {
+    border-top: 1px solid var(--border);
+    padding: 56px 40px;
+    max-width: var(--wide); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  }
+  .next-up-left p { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 8px; }
+  .next-up-left h3 { font-family: 'Lora', serif; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .next-link {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500;
+    color: var(--text-primary); text-decoration: none;
+    border: 1px solid var(--border-strong);
+    padding: 10px 20px; border-radius: 40px;
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .next-link:hover { background: var(--text-primary); color: var(--surface); border-color: var(--text-primary); }
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-name { font-family: 'Lora', serif; font-style: italic; font-size: 15px; color: var(--text-tertiary); }
+  footer a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color var(--transition); }
+  footer a:hover { color: var(--text-primary); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .cs-hero { grid-template-columns: 1fr; padding: 48px 24px 40px; }
+    .impact-box { position: static; }
+    .context-inner { grid-template-columns: repeat(3, 1fr); }
+    .triptych { grid-template-columns: 1fr; }
+    .annotation-row { grid-template-columns: 1fr; }
+    .messy-grid { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .funnel-row { grid-template-columns: 1fr; gap: 8px; }
+    .next-up { flex-direction: column; align-items: flex-start; }
+    .prose, .research-rounds, .funnel-intro, .funnel-list, .media-frame,
+    .annotation-row, .messy-grid, .qual-quotes, .directional-note,
+    .learnings-grid, .flywheel-panel { padding-left: 24px; padding-right: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    All work
+  </a>
+  <a href="#solution" class="nav-jump">↓ Jump to solution</a>
+</nav>
+
+
+<!-- HERO -->
+<header class="cs-hero">
+  <div>
+    <p class="cs-hero-tag">Measurement-Based Care · Client &amp; Provider Portal · 2021–2022</p>
+    <h1>Closing the loop: giving clients <em>visibility</em> into their own progress in therapy</h1>
+    <p class="cs-hero-summary">
+      Clients were completing mental health assessments with no feedback. Providers were receiving scores they weren't using. I designed Therapy Journey, SonderMind's first client-facing view of clinical assessment data, and the parallel provider improvements that made measurement-based care work on both sides of the relationship.
+    </p>
+    <a href="#solution" class="jump-btn">↓ Jump to solution</a>
+  </div>
+
+  <div class="impact-box">
+    <p class="impact-box-label">At a glance</p>
+    <div class="impact-stats">
+      <div class="impact-stat">
+        <span class="impact-number">↑ 31.6%</span>
+        <span class="impact-desc">CQ completion rate peak (from 22.8% at project start)</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-number">7×</span>
+        <span class="impact-desc">monthly delivery volume growth, rate held at 27–30% through scale</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-number">82,682</span>
+        <span class="impact-desc">assessments completed in a single month by Nov 2022, up from 9,081</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- CONTEXT STRIP -->
+<div class="context-strip">
+  <div class="context-inner">
+    <div class="context-cell">
+      <p class="context-key">My role</p>
+      <p class="context-val">Lead Designer</p>
+    </div>
+    <div class="context-cell">
+      <p class="context-key">Timeline</p>
+      <p class="context-val">Jun 2021–2022</p>
+    </div>
+    <div class="context-cell">
+      <p class="context-key">Team</p>
+      <p class="context-val">PM · Eng Lead · Clinical Quality Team</p>
+    </div>
+    <div class="context-cell">
+      <p class="context-key">Tools</p>
+      <p class="context-val">Figma · Playbook UX</p>
+    </div>
+    <div class="context-cell">
+      <p class="context-key">Status</p>
+      <p class="context-val">Shipped to 100%</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- MBC FLYWHEEL -->
+<section class="cs-section">
+  <div class="prose" style="margin-bottom: 32px;">
+    <p class="section-label">Background</p>
+    <h2>The MBC flywheel, and why ours wasn't spinning</h2>
+  </div>
+  <div class="flywheel-panel contained">
+    <p>
+      <strong>Measurement-Based Care (MBC)</strong> is the clinical practice of routinely collecting patient-reported data (symptom severity scores, functional assessments) and using that data to adjust treatment. Done right, it creates a self-reinforcing cycle: a client completes an assessment, the provider sees the score, adjusts their approach, the client experiences more responsive care, and is more likely to complete the next assessment.
+    </p>
+    <p>
+      The clinical evidence is strong. Patients in MBC programs deteriorate less and improve at significantly higher rates compared to routine care. At scale, the data also supports payor negotiations, provider development, and quality improvement. It's one of the few things that's genuinely good for clients, providers, and the business.
+    </p>
+    <p>
+      The catch: <em>the flywheel only works if the data actually moves.</em> At SonderMind, it wasn't. Clients completed assessments with no feedback. Providers received scores they weren't reviewing. The loop was broken before it could become a loop.
+    </p>
+  </div>
+</section>
+
+
+<!-- PROBLEM TRIPTYCH -->
+<section class="cs-section">
+  <div class="prose" style="margin-bottom: 32px;">
+    <p class="section-label">The problem</p>
+    <h2>Three different problems, one broken system</h2>
+  </div>
+
+  <div style="max-width: var(--wide); margin: 0 auto; padding: 0 40px;">
+    <div class="triptych">
+      <div class="triptych-cell">
+        <p class="triptych-type biz">Business problem</p>
+        <h3>MBC was a clinical priority, but only 22% of providers were using the data</h3>
+        <p>CQ completion had dropped from ~30% to 12% over 7 months. 78% of providers weren't reviewing PRO data beyond the summary score on their dashboard. If providers weren't using it, clients had no reason to complete it, and the clinical value of the whole system evaporated.</p>
+      </div>
+      <div class="triptych-cell">
+        <p class="triptych-type user">User problem</p>
+        <h3>Clients were completing assessments into a black hole</h3>
+        <p>They had no idea what their scores meant, whether anyone was reading them, or whether they were getting better. The clients who kept completing CQs did it because their therapist told them to, not because the platform gave them any reason to. The ones who stopped had no signal it mattered.</p>
+      </div>
+      <div class="triptych-cell">
+        <p class="triptych-type tech">Technical constraint</p>
+        <h3>Scores weren't reliably stored, and the backend was being rebuilt in parallel</h3>
+        <p>The CQ infrastructure was a patchwork of joined tables. Scores weren't reliably stored. The rewrite had to happen alongside the design work, which meant building a display experience for a data model that was shifting under us. We also had a clinical constraint: showing clients PHQ-9 scores that included suicidality questions required careful design from the start.</p>
+      </div>
+      <div class="triptych-reframe">
+        <p>The research reframe: we went in thinking this was a <strong>completion rate problem</strong>. It was actually a <strong>meaning problem</strong>. Clients weren't completing CQs because the act felt disconnected from their care. Making scores visible wasn't just a feature; it was closing a loop that had been open since the beginning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- RESEARCH -->
+<section class="cs-section">
+  <div class="prose" style="margin-bottom: 40px;">
+    <p class="section-label">Research &amp; discovery</p>
+    <h2>Three rounds before a single screen was designed</h2>
+    <p>I ran research across three cohorts, starting with high-engagement outliers to understand what completing CQs actually looked like when it worked, then moving to concept testing and usability validation.</p>
+  </div>
+
+  <div class="research-rounds">
+    <div class="research-round">
+      <p class="round-label">Round 0 — Behavioral outlier interviews</p>
+      <h3>I started with the clients who were completing 50+ assessments — far above average</h3>
+      <p>I wanted to understand what made them different, because their behavior was what we were trying to cultivate. Three things consistently came up: their therapist had set the expectation that CQs were part of therapy; they used them for self-reflection between sessions; and therapist follow-up mattered to them. CQ completion wasn't a platform habit. It was a relational one.</p>
+    </div>
+
+    <div class="research-round">
+      <p class="round-label">Round 1 — Unmoderated concept testing · 6 participants</p>
+      <h3>100% expected a graph. None of them wanted to feel judged by an app.</h3>
+      <ul class="finding-list">
+        <li>Every participant expected some kind of visual showing progress over time — most wanted individual questions broken out, not just a single aggregate score</li>
+        <li>When symptoms were worsening, participants wanted gentleness and reassurance, not clinical neutrality</li>
+        <li>Strong expectation that their therapist was reviewing the data and would bring it up in session</li>
+      </ul>
+      <div class="pull-quote">"I would want to see graphs so I could see how the questions have been answered over time. I think it would be nice to have a visual where I could quickly be like, 'oh wow, there's a spike in how bad I've been feeling.'"</div>
+      <div class="pull-quote">"Maybe some sort of feedback from my therapist, like 'Oh, I see progress here.' Some sort of statement from the professional, because sometimes I see a graph and I don't know what to make of it."</div>
+    </div>
+
+    <div class="research-round">
+      <p class="round-label">Round 2 — Moderated usability testing with SonderMind clients · 5 participants</p>
+      <h3>The design landed. The language still needed work.</h3>
+      <ul class="finding-list">
+        <li>"Therapy journey" as a name resonated immediately — <em>"Therapy is a journey right? It's about getting better, even if the numbers get worse."</em></li>
+        <li>The graph was well-received. The smiley face was described as "delightful" and "my smiley face friend"</li>
+        <li>Language around severe symptoms still felt too clinical — validating but not meaningful. <em>"Symptoms feel cold and clinical and reductive to what I'm experiencing."</em></li>
+        <li>Participants wanted resources for right now, not just at their next session</li>
+      </ul>
+      <div class="research-gap"><strong>What the research didn't answer:</strong> Round 1 used participants who weren't active SonderMind clients, so we couldn't confirm those expectations held for our actual users until Round 2. The therapist-comment feature that multiple participants asked for didn't make V1 scope. We shipped knowing clients wanted therapist context alongside their data, and we shipped without it.</div>
+    </div>
+  </div>
+
+  <div class="media-frame" style="margin-top: 40px;">
+    <div class="artifact-wrap">
+      <img src="assessment screen/Screenshot 2026-06-01 at 12.19.48 AM.png" alt="Research study prototype showing the CQ flow (GAD-7 questions) on the left and the CCD detail and overview pages on the right — the prototype used in Round 2 usability testing">
+    </div>
+    <p class="media-caption">Round 2 test prototype — CQ flow (left) and Therapy Journey detail + overview (right)</p>
+  </div>
+</section>
+
+
+<!-- 50-TO-5 FUNNEL -->
+<section class="funnel-section">
+  <div class="funnel-intro">
+    <p class="section-label">Editorial judgment</p>
+    <h2>What we cut — and why each cut was a real decision</h2>
+    <p>Every item below was seriously considered. The kills weren't obvious; they were argued for.</p>
+  </div>
+
+  <div class="funnel-list">
+    <div class="funnel-row killed">
+      <span class="funnel-tag killed-tag">Killed</span>
+      <div>
+        <p class="funnel-row-title">Provider-mediated viewing only</p>
+        <p class="funnel-row-reason">The existing model: providers shared CQ data verbally during sessions. Clinical literature supported this. We chose not to rely on it because providers weren't doing it at scale, and we couldn't gate client access on a behavior we couldn't control.</p>
+      </div>
+    </div>
+    <div class="funnel-row killed">
+      <span class="funnel-tag killed-tag">Killed</span>
+      <div>
+        <p class="funnel-row-title">Graph visualization on the provider side</p>
+        <p class="funnel-row-reason">We built trend lines for the client-facing Therapy Journey but left them off the provider side. Two reasons: providers were already getting several new CQ types in the same release, and adding a graph on top of that was too heavy a dev lift for the MVP. The rationale that made the tradeoff easier: providers are trained to read scores. A PHQ-9 of 14 means something specific to a clinician without a line going up or down. Clients don't have that training, so the graph was doing more interpretive work for them. The 2023 CQ Visualization initiative eventually closed the gap on the provider side.</p>
+      </div>
+    </div>
+    <div class="funnel-row killed">
+      <span class="funnel-tag killed-tag">Killed</span>
+      <div>
+        <p class="funnel-row-title">Question-by-question breakdown in V1</p>
+        <p class="funnel-row-reason">Research strongly surfaced this — clients specifically said they wanted to see individual items, not just aggregate scores. We cut it because the backend scoring model didn't support it yet and the engineering effort would have delayed the whole feature.</p>
+      </div>
+    </div>
+    <div class="funnel-row killed">
+      <span class="funnel-tag killed-tag">Killed</span>
+      <div>
+        <p class="funnel-row-title">Therapist comment overlay</p>
+        <p class="funnel-row-reason">The most-requested feature in Round 1 research. Killed from V1 because it required provider-side workflow changes that weren't scoped. We shipped knowing this was a gap.</p>
+      </div>
+    </div>
+    <div class="funnel-row killed">
+      <span class="funnel-tag killed-tag">Killed</span>
+      <div>
+        <p class="funnel-row-title">Dynamic in-line coping resources</p>
+        <p class="funnel-row-reason">Round 2 participants wanted something to do right now between sessions. We addressed this partially with a static Discover section. Dynamic resource matching was V2+ scope.</p>
+      </div>
+    </div>
+    <div class="funnel-row">
+      <span class="funnel-tag shipped-tag">Shipped</span>
+      <div>
+        <p class="funnel-row-title">Trend graph + plain-language severity + Discover section</p>
+        <p class="funnel-row-reason">Line graph of last 6 submissions per assessment type; severity descriptions in plain, compassionate language ("anxiety" not "GAD-7"); smiley face visual tied to score range; Discover section with static wellness content; separate detail views per assessment type.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SOLUTION -->
+<section class="cs-section" id="solution">
+  <div class="prose" style="margin-bottom: 40px;">
+    <p class="section-label">The solution</p>
+    <h2>Two portals, one flywheel</h2>
+    <p>The design addressed both sides of the broken loop: giving clients visibility into their own progress, and giving providers a more actionable view of the data they were responsible for using.</p>
+  </div>
+
+  <!-- Client portal -->
+  <div class="media-frame" style="margin-bottom: 48px;">
+    <div class="mobile-row">
+      <img src="assessment screen/active client with no cqs and assigned.png" alt="Therapy Journey empty state — no assessments completed yet, with assigned check-ins from provider">
+      <img src="assessment screen/TJ - landing page.png" alt="Therapy Journey overview — score cards for Anxiety, Depression, and Day-to-day life assessments">
+      <img src="assessment screen/CQ_Complete.png" alt="Assessment completion confirmation screen — 'Well done, your answers have been sent to your therapist'">
+    </div>
+    <p class="media-caption">Therapy Journey: empty state (left), overview with scores (center), and post-completion confirmation (right)</p>
+  </div>
+
+  <div class="annotation-stacked" style="margin-bottom: 56px;">
+    <div class="annotation-text">
+      <p class="annotation-number">01</p>
+      <p class="annotation-title">Plain language over clinical labels</p>
+      <p class="annotation-desc">Research consistently told us clients found "PHQ-9" and "GAD-7" alienating. Every label was rewritten in plain language: "Anxiety" not "GAD-7," "Depression" not "PHQ-9." Score descriptions were framed around the client's experience, not a diagnosis. "Everyone experiences anxiety from time to time" instead of "Minimal severity."</p>
+      <p class="annotation-cost">Cost: required clinical sign-off on every phrase. Slower to ship, right to do.</p>
+    </div>
+    <div class="mobile-wrap" style="max-width: 360px; margin: 0 auto;">
+      <img src="assessment screen/insight.png" alt="Day-to-day life detail page — trend graph with smiley face and compassionate score description">
+    </div>
+  </div>
+
+  <div class="annotation-stacked" style="margin-bottom: 56px;">
+    <div class="annotation-text">
+      <p class="annotation-number">02</p>
+      <p class="annotation-title">Six-point trend graph with interactive data points</p>
+      <p class="annotation-desc">The graph showed the last 6 completed assessments per type. Each point was interactive — clicking surfaced the score, date, and a written description of what that score range typically means. 100% of Round 1 participants had asked for this. Round 2 confirmed it landed.</p>
+      <p class="annotation-cost">Cost: only available for clients. The same graph on the provider side was cut from this release — see funnel above.</p>
+    </div>
+    <div class="mobile-wrap" style="max-width: 360px; margin: 0 auto;">
+      <img src="assessment screen/Frame 802.png" alt="Anxiety symptoms detail page — trend graph, smiley face, severity description, and Discover section">
+    </div>
+  </div>
+
+  <div class="annotation-stacked" style="margin-bottom: 72px;">
+    <div class="annotation-text">
+      <p class="annotation-number">03</p>
+      <p class="annotation-title">Naming it "Therapy Journey" — not "Assessments"</p>
+      <p class="annotation-desc">The name wasn't cosmetic. "Therapy journey" placed the experience inside the client's ongoing care story, not inside a clinical data system. In Round 2 testing, it resonated on first exposure: "Therapy is a journey right? It's about getting better and improving yourself even if the numbers get worse."</p>
+      <p class="annotation-cost">This one I'd fight to keep in any future redesign. Naming is philosophy made visible.</p>
+    </div>
+    <div class="artifact-wrap">
+      <img src="assessment screen/Screenshot 2026-06-01 at 12.33.14 AM.png" alt="Design spec showing all four severity states for GAD-7 — Nominal, Mild, Moderate, Severe — with smiley face and copy adapting per state">
+    </div>
+  </div>
+
+  <!-- Provider portal -->
+  <div style="border-top: 1px solid var(--border); padding-top: 56px;">
+    <div class="prose" style="margin-bottom: 32px;">
+      <h2>Provider portal: a leaner MVP, by design</h2>
+      <p>The provider side shipped without the trend graph. Providers are trained to read assessment scores directly, and adding a visualization on top of several new CQ types in the same release was too heavy a dev lift. What shipped: score summaries per assessment, differentiation between scheduled and manual sends, and a scoring/interpretation section with clinical context alongside raw scores.</p>
+    </div>
+    <div class="media-frame" style="display: flex; flex-direction: column; gap: 24px;">
+      <div>
+        <div class="desktop-wrap">
+          <img src="assessment screen/Screenshot 2026-04-29 at 4.21.14 PM 1.png" alt="Provider portal Assessments tab — score summary cards for Functional, Anxiety, Depression, Therapeutic Alliance, Suicidality, and Well-Being">
+        </div>
+        <p class="media-caption">Assessments tab — score summaries across all active CQ types</p>
+      </div>
+      <div>
+        <div class="desktop-wrap">
+          <img src="assessment screen/Screenshot 2026-04-29 at 4.21.51 PM 1.png" alt="Provider portal — Therapeutic Alliance detail showing subscores, questionnaire responses, and recent score history">
+        </div>
+        <p class="media-caption">Assessment detail — subscores and recent response history</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- MESSY MIDDLE -->
+<section class="cs-section">
+  <div class="prose" style="margin-bottom: 32px;">
+    <p class="section-label">The messy middle</p>
+    <h2>What actually happened</h2>
+  </div>
+
+  <div class="messy-grid">
+    <div class="messy-card">
+      <p class="messy-tag">Infrastructure problem</p>
+      <h3>We were designing a display layer for data that wasn't reliably stored yet</h3>
+      <p>The CQ backend rewrite happened in parallel with the design work. Some assumptions about what scores would be available, in what format, and with what latency had to stay flexible throughout. At one point a scoring bug meant completed CQs weren't showing up on the client side at all after submission.</p>
+    </div>
+    <div class="messy-card">
+      <p class="messy-tag">MVP debate</p>
+      <h3>The biggest tension wasn't a single feature — it was the right level of data to ship at all</h3>
+      <p>Scoping conversations with my PM and eng lead kept circling the same question: are we shipping enough to be useful, or so much that we're shipping late and fragile? The graph-vs-no-graph call on the provider side came up multiple times. It took a principled argument, not just a scope call, to close it.</p>
+    </div>
+    <div class="messy-card">
+      <p class="messy-tag">Language problem</p>
+      <h3>The line between "compassionate" and "empty" is hard to find in a fixed text string</h3>
+      <p>Round 2 research flagged that our severity language still felt "platitude-y" even after we'd improved it. Participants said it was validating but not meaningful. We knew we hadn't fully solved it and treated it as a known gap going into launch. It's still unresolved.</p>
+    </div>
+    <div class="messy-card">
+      <p class="messy-tag">The gap we shipped with</p>
+      <h3>Clients wanted their therapist's voice in the data. We shipped without it.</h3>
+      <p>The most-requested feature in Round 1 was therapist comments alongside scores. We knew this going in and scoped it out anyway. The research was set up to validate the display approach, not to challenge whether the whole interaction model (client sees data, interprets alone) was right. That's worth owning.</p>
+    </div>
+  </div>
+
+  <div class="media-frame" style="margin-top: 32px;">
+    <div class="artifact-wrap">
+      <img src="assessment screen/Otto mapping.png" alt="Design artifact mapping smiley face expressions ('Otto') to score ranges for Functional, PHQ-9, and GAD-7 assessments">
+    </div>
+    <p class="media-caption">"Otto" mapping — smiley face expressions tied to score ranges across all three assessment types. One of the defining design decisions of the project.</p>
+  </div>
+</section>
+
+
+<!-- IMPACT -->
+<section class="impact-final">
+  <div style="max-width: var(--wide); margin: 0 auto; padding: 0 40px;">
+    <p class="section-label">Impact</p>
+    <h2 style="font-family: 'Lora', serif; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; max-width: 640px; line-height: 1.2;">
+      Completion rate up, and it held as volume grew nearly 7×.
+    </h2>
+  </div>
+
+  <div class="impact-grid">
+    <div class="impact-cell">
+      <p class="impact-metric">22.8% → 31.6%</p>
+      <p class="impact-metric-label">CQ completion rate</p>
+      <p class="impact-metric-sub">Jan 2021 → Nov 2021 peak</p>
+    </div>
+    <div class="impact-cell">
+      <p class="impact-metric">27–30%</p>
+      <p class="impact-metric-label">Sustained completion rate through 2022</p>
+      <p class="impact-metric-sub">Despite ~7× volume growth</p>
+    </div>
+    <div class="impact-cell">
+      <p class="impact-metric">~40K → 275K+</p>
+      <p class="impact-metric-label">Monthly CQs delivered</p>
+      <p class="impact-metric-sub">Jan 2021 → Dec 2022</p>
+    </div>
+    <div class="impact-cell">
+      <p class="impact-metric">82,682</p>
+      <p class="impact-metric-label">Completions in a single month</p>
+      <p class="impact-metric-sub">Nov 2022, up from 9,081 in Jan 2021</p>
+    </div>
+  </div>
+
+  <div class="qual-quotes">
+    <div class="qual-quote">
+      <p>"I can't stress enough how this helps me reflect and keep track of what my real triggers are."</p>
+      <span class="qual-source">SonderMind client · Round 2 usability study</span>
+    </div>
+    <div class="qual-quote">
+      <p>"Therapy is a journey right? It's about getting better and improving yourself even if the numbers get worse, you know, you keep trying."</p>
+      <span class="qual-source">SonderMind client · Round 2 usability study</span>
+    </div>
+  </div>
+
+  <p class="directional-note">Platform-wide data, not a controlled study. Network growth and other improvements were in play during this period. The trend inflection in late 2021 aligns with the Therapy Journey release, and the stabilization through 2022 suggests the experience change held at scale. Whether higher completion rates actually improved clinical outcomes is a longer measurement horizon we didn't have instrumentation for at the time.</p>
+</section>
+
+
+<!-- LEARNINGS -->
+<section class="cs-section">
+  <div class="prose" style="margin-bottom: 40px;">
+    <p class="section-label">Challenges + learnings</p>
+    <h2>What I'd do differently, and what I'd fight to keep</h2>
+  </div>
+
+  <div class="learnings-grid">
+    <div class="learning">
+      <span class="learning-num">01</span>
+      <div>
+        <h3>The infrastructure dependency was underestimated</h3>
+        <p>Designing the display layer while the scoring backend was being rebuilt meant we hit walls mid-build that wouldn't have come up in a normal discovery process. Next time I'd push for explicit alignment on data model readiness before committing to visual scope.</p>
+      </div>
+    </div>
+    <div class="learning">
+      <span class="learning-num">02</span>
+      <div>
+        <h3>Research found what we designed for — but not what we didn't design</h3>
+        <p>Both rounds surfaced things we could act on. But the research was set up to validate the display approach, not to challenge whether the interaction model itself was right. We knew clients wanted therapist context alongside their data and shipped without it. Worth naming.</p>
+      </div>
+    </div>
+    <div class="learning">
+      <span class="learning-num">03</span>
+      <div>
+        <h3>The naming was the thing I'd fight to keep</h3>
+        <p>"Therapy journey" over "assessments" or "clinical data." "Anxiety" over "GAD-7." These weren't polish. They were a position about who this tool was for and how it should make people feel. In a product full of clinician-facing language that leaked into client surfaces, getting this right mattered. Future iterations that revert to clinical labels will lose something real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- NEXT -->
+<div class="next-up">
+  <div class="next-up-left">
+    <p>Next case study</p>
+    <h3>The billing page that was blocking clients from continuing therapy</h3>
+  </div>
+  <a href="case-study-client-billing-revamp.html" class="next-link">Read it →</a>
+</div>
+
+<footer>
+  <span class="footer-name">Julia</span>
+  <a href="index.html">← Back to all work</a>
+</footer>
+
+<!--
+  VISUAL DECISIONS TO VALIDATE:
+  - Color usage follows template exactly (violet = terra, pink = sage, amber = tertiary)
+  - MBC flywheel uses terra-subtle background to distinguish it as background/context
+  - Triptych reframe row spans all 3 columns
+  - Funnel uses a list layout instead of card grid
+  - Provider portal solution uses a 2-column media grid
+  - Mobile screenshots use terra-subtle colored bg wrapper (mobile-wrap)
+  - Desktop/portal screenshots use desktop-wrap (white bg, border)
+  - Design artifacts use artifact-wrap (white bg, padding)
+  - Three mobile screens shown side-by-side in the client portal hero (empty state, overview, completion)
+
+  IMAGES USED:
+  - Client solution hero: active client with no cqs and assigned.png + TJ - landing page.png + CQ_Complete.png
+  - Annotation 01 (plain language): insight.png (Day-to-day life detail)
+  - Annotation 02 (trend graph): Frame 802.png (Anxiety detail with graph)
+  - Annotation 03 (naming): Screenshot 2026-06-01 at 12.33.14 AM.png (GAD-7 severity states spec)
+  - Provider portal: CQ scores.png + active client with completed cqs.png
+  - Research section: Screenshot 2026-06-01 at 12.19.48 AM.png (Round 2 prototype)
+  - Messy middle: Otto mapping.png (smiley face score mapping artifact)
+
+  IMAGES AVAILABLE BUT NOT YET USED (consider for future passes):
+  - Screenshot 2026-06-01 at 12.29.58 AM.png — Depression detail with accessibility annotations
+  - Screenshot 2026-06-01 at 12.33.38 AM.png — All severity states across all 3 types (overview)
+  - Screenshot 2026-06-01 at 12.37.54 AM.png — 3-state client composite + insight panel
+  - Screenshot 2026-06-01 at 12.37.06 AM.png — CQ scorecard grid (all types)
+  - Screenshot 2026-06-01 at 12.40.26 AM.png — Provider CQ card states spec
+  - Screenshot 2026-04-29 at 4.21.14 PM 1.png — Current (2026) provider Assessments tab
+  - Screenshot 2026-04-29 at 4.21.51 PM 1.png — Therapeutic Alliance detail (current)
+  - CQ results.png — "Complete a clinical assessment" provider modal
+  - Q1_filled.png — GAD-7 question in progress (good for research section)
+  - intro.png — CQ intro screen
+
+  STILL NEEDS:
+  - "Next case study" link and title
+  - nav "All work" link (currently portfolio_homepage_v5.html — update if filename differs)
+  - Consider GIFs or video for the graph interaction (clicking data points) if available
+-->
+
+</body>
+</html>

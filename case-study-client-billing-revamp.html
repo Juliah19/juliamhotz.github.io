@@ -1,0 +1,1055 @@
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  WORKING DRAFT — NOT READY TO PUBLISH                           ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║  Visual decisions to validate before publishing:                ║
+  ║  · Triptych column labels: "Client Experience" / "Business      ║
+  ║    Signal" / "Technical Constraint" — confirm these match       ║
+  ║    your preferred framing                                       ║
+  ║  · Impact stat colors use --terra (violet) — swap to --sage     ║
+  ║    (pink) if that reads better at your actual portfolio scale   ║
+  ║  · Layer pyramid uses inline SVG divider — replace with a       ║
+  ║    Figma export if you want a custom illustration               ║
+  ║  · "Next case study" title and link are placeholders            ║
+  ║                                                                  ║
+  ║  Placeholder content still needed:                              ║
+  ║  · All media slots (screenshots, GIFs) — labeled inline        ║
+  ║  · STAT: billing care coordination case reduction (60-day)      ║
+  ║  · Next case study: title + URL                                 ║
+  ║  · Nav "All work" href — update to your portfolio URL           ║
+  ║                                                                  ║
+  ║  Font/color note: Built from case-study-template-v1_3.html.     ║
+  ║  Matches that file's tokens exactly. If your live portfolio     ║
+  ║  uses different values, update :root variables here.            ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Billing Revamp — Julia Hotzinger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:              #F8F7F2;
+    --surface:         #FFFFFF;
+    --surface-2:       #F2F0EA;
+    --text-0:          #0A0907;
+    --text-primary:    #18160E;
+    --text-secondary:  #2E2B24;
+    --text-tertiary:   #7A756C;
+    --terra:           #2B3270;
+    --terra-mid:       #5560A0;
+    --terra-light:     #E4E6F5;
+    --terra-subtle:    #F2F3FA;
+    --sage:            #C03A6A;
+    --sage-light:      #FAE0EC;
+    --sage-mid:        #D480A0;
+    --amber:           #B8891E;
+    --amber-mid:       #D4AA5A;
+    --amber-light:     #F5EDD8;
+    --border:          #E2DDD7;
+    --border-strong:   #C4BDB5;
+    --transition:      0.18s ease;
+    --max:             800px;
+    --wide:            1100px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(248,247,243,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-back {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--text-secondary);
+    text-decoration: none; transition: color var(--transition);
+  }
+  .nav-back:hover { color: var(--text-primary); }
+  .nav-back svg { transition: transform var(--transition); }
+  .nav-back:hover svg { transform: translateX(-3px); }
+  .nav-jump {
+    font-size: 13px; font-weight: 500;
+    color: var(--surface);
+    background: var(--text-primary);
+    padding: 7px 16px; border-radius: 40px;
+    text-decoration: none;
+    transition: background var(--transition);
+  }
+  .nav-jump:hover { background: var(--sage); }
+
+  /* ── LAYOUT ── */
+  .contained { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+  .wide      { max-width: var(--wide); margin: 0 auto; padding: 0 40px; }
+  .cs-section { padding: 72px 0; border-top: 1px solid var(--border); }
+  .section-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 32px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: block;
+    width: 20px; height: 1px; background: var(--border-strong);
+  }
+
+  /* ── HERO ── */
+  .cs-hero {
+    padding: 80px 40px 64px;
+    max-width: var(--wide); margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 400px; gap: 60px; align-items: start;
+  }
+  .cs-hero-tag {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 16px;
+  }
+  .cs-hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(34px, 4.5vw, 52px);
+    font-weight: 700; line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--text-0); margin-bottom: 20px;
+  }
+  .cs-hero h1 em { font-style: italic; font-weight: 700; color: var(--terra); }
+  .cs-hero-summary {
+    font-size: 18px; font-weight: 300;
+    color: var(--text-secondary); line-height: 1.75;
+    max-width: 520px; margin-bottom: 32px;
+  }
+  .jump-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600;
+    color: var(--surface); background: var(--text-0);
+    padding: 10px 20px; border-radius: 40px;
+    text-decoration: none; transition: background var(--transition);
+  }
+  .jump-btn:hover { background: var(--terra); }
+
+  /* ── IMPACT BOX ── */
+  .impact-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px 32px;
+    position: sticky; top: 80px;
+  }
+  .impact-box-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 20px;
+  }
+  .impact-stats { display: flex; flex-direction: column; gap: 20px; }
+  .impact-stat {
+    display: flex; flex-direction: column; gap: 3px;
+    padding-bottom: 20px; border-bottom: 1px solid var(--border);
+  }
+  .impact-stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .impact-number {
+    font-family: 'Lora', serif;
+    font-size: 34px; font-weight: 700;
+    color: var(--text-0); line-height: 1;
+  }
+  .impact-desc { font-size: 14px; color: var(--text-secondary); font-weight: 300; }
+  .impact-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+
+  /* ── CONTEXT STRIP ── */
+  .context-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .context-inner {
+    max-width: var(--wide); margin: 0 auto; padding: 0 40px;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+  }
+  .context-cell {
+    padding: 24px 28px;
+    border-right: 1px solid var(--border);
+  }
+  .context-cell:first-child { padding-left: 0; }
+  .context-cell:last-child  { border-right: none; }
+  .context-key {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 6px;
+  }
+  .context-val { font-size: 14px; color: var(--text-primary); line-height: 1.5; font-weight: 400; }
+
+  /* ── RESEARCH ── */
+  .research-block {
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    background: var(--surface);
+    margin-top: 32px;
+  }
+  .research-method {
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .research-method:last-child { border-bottom: none; }
+  .research-method-label {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 10px;
+  }
+  .research-method h3 {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 600;
+    margin-bottom: 14px; line-height: 1.35;
+    color: var(--text-primary);
+  }
+  .research-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; margin-top: 12px;
+  }
+  .research-col-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 6px;
+  }
+  .research-col p {
+    font-size: 14px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.65;
+  }
+  .ai-override-note {
+    margin-top: 16px;
+    padding: 16px 20px;
+    background: var(--terra-subtle);
+    border: 1px solid var(--terra-light);
+    border-radius: 8px;
+    font-size: 14px; color: var(--text-secondary);
+    font-weight: 300; line-height: 1.65;
+  }
+  .ai-override-note strong { color: var(--terra); font-weight: 600; }
+
+  /* ── TRIPTYCH ── */
+  .triptych {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .triptych-cell { background: var(--surface); padding: 32px; }
+  .triptych-type {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;
+  }
+  .triptych-type.biz  { color: var(--sage); }
+  .triptych-type.user { color: var(--terra); }
+  .triptych-type.tech { color: var(--amber); }
+  .triptych-cell h3 {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 600;
+    line-height: 1.3; margin-bottom: 12px;
+    letter-spacing: -0.01em; color: var(--text-primary);
+  }
+  .triptych-cell p { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
+  .triptych-evolution {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    border-left: 3px solid var(--sage-mid);
+    font-size: 15px; font-style: italic;
+    color: var(--text-secondary); font-weight: 300; line-height: 1.7;
+  }
+
+  /* ── PYRAMID ── */
+  .pyramid-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-top: 32px;
+  }
+  .pyramid-layer {
+    border-radius: 12px; padding: 28px;
+    border: 1px solid var(--border);
+  }
+  .pyramid-layer.l1 { background: var(--surface); border-color: var(--terra-mid); }
+  .pyramid-layer.l2 { background: var(--terra-subtle); }
+  .pyramid-layer.l3 { background: var(--surface-2); }
+  .pyramid-layer-num {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 8px;
+  }
+  .pyramid-layer h3 {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 600;
+    line-height: 1.3; margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+  .pyramid-layer p { font-size: 14px; color: var(--text-secondary); font-weight: 300; line-height: 1.65; }
+  .pyramid-badge {
+    display: inline-block; margin-top: 14px;
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 40px;
+  }
+  .badge-shipped  { background: var(--sage-light); color: var(--sage); }
+  .badge-exp      { background: var(--terra-light); color: var(--terra); }
+  .badge-roadmap  { background: var(--amber-light); color: var(--amber); }
+
+  /* ── PROSE ── */
+  .prose { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+  .prose h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px; font-weight: 700;
+    letter-spacing: -0.025em; line-height: 1.15;
+    color: var(--text-0); margin-bottom: 20px;
+  }
+  .prose p {
+    font-size: 18px; font-weight: 300;
+    color: var(--text-secondary); line-height: 1.8; margin-bottom: 18px;
+  }
+  .prose strong { font-weight: 600; color: var(--text-primary); }
+
+  /* ── FUNNEL ── */
+  .funnel-intro { max-width: var(--max); margin: 0 auto; padding: 0 40px; margin-bottom: 40px; }
+  .funnel-intro h2 {
+    font-family: 'Lora', serif;
+    font-size: 28px; font-weight: 700;
+    letter-spacing: -0.02em; margin-bottom: 12px;
+  }
+  .funnel-intro p { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
+  .funnel-grid {
+    max-width: var(--wide); margin: 0 auto; padding: 0 40px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  }
+  .concept-card {
+    border: 1px solid var(--border); border-radius: 10px;
+    overflow: hidden; background: var(--surface); position: relative;
+  }
+  .concept-card.killed { opacity: 0.5; }
+  .concept-card.killed::after {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 8px, rgba(28,25,22,0.04) 8px, rgba(28,25,22,0.04) 9px);
+    border-radius: 10px;
+  }
+  .concept-thumb {
+    width: 100%; aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--surface-2), #EFF0F5);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: var(--text-tertiary); font-style: italic;
+    padding: 16px; text-align: center;
+  }
+  .concept-body { padding: 14px; }
+  .concept-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-primary); }
+  .concept-verdict { font-size: 12px; color: var(--text-tertiary); font-weight: 300; line-height: 1.5; }
+  .concept-cost { font-size: 11px; color: var(--amber); font-weight: 400; margin-top: 6px; font-style: italic; }
+  .concept-tag {
+    display: inline-block; margin-top: 10px;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 40px;
+  }
+  .concept-tag.killed-tag  { background: var(--terra-light); color: var(--terra); }
+  .concept-tag.chosen-tag  { background: var(--sage-light); color: var(--sage); }
+  .concept-tag.scoped-tag  { background: var(--amber-light); color: var(--amber); }
+
+  /* ── MEDIA ── */
+  .media-frame { max-width: var(--wide); margin: 0 auto; padding: 0 40px; }
+  .media-full {
+    width: 100%; border-radius: 12px;
+    border: 1px solid var(--border); overflow: hidden; background: var(--surface);
+    aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-tertiary); font-style: italic; font-size: 14px;
+  }
+  .media-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+  .media-half {
+    border-radius: 10px; border: 1px solid var(--border);
+    overflow: hidden; background: var(--surface);
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-tertiary); font-style: italic; font-size: 13px;
+    padding: 16px; text-align: center;
+  }
+  .media-caption { font-size: 12px; color: var(--text-tertiary); font-weight: 300; margin-top: 10px; text-align: center; font-style: italic; }
+
+  /* ── ANNOTATION ROW ── */
+  .annotation-row {
+    max-width: var(--wide); margin: 0 auto; padding: 0 40px;
+    display: flex; flex-direction: column;
+    gap: 24px;
+  }
+  .annotation-number {
+    font-family: 'Lora', serif;
+    font-size: 48px; font-weight: 400;
+    color: var(--border); line-height: 1; margin-bottom: 8px;
+  }
+  .annotation-title {
+    font-family: 'Lora', serif;
+    font-size: 18px; font-weight: 600;
+    line-height: 1.3; margin-bottom: 10px;
+  }
+  .annotation-desc { font-size: 16px; color: var(--text-secondary); font-weight: 300; line-height: 1.75; }
+  .annotation-cost {
+    font-size: 13px; color: var(--amber);
+    font-style: italic; margin-top: 10px; font-weight: 400;
+  }
+
+  /* ── CLAIM STATES TABLE ── */
+  .claim-states {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 14px;
+    margin-top: 24px;
+  }
+  .claim-states th {
+    background: var(--surface-2);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-tertiary);
+    border-bottom: 1px solid var(--border);
+  }
+  .claim-states td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-weight: 300; line-height: 1.55;
+    vertical-align: top;
+  }
+  .claim-states tr:last-child td { border-bottom: none; }
+  .claim-states td:first-child { font-weight: 500; color: var(--text-primary); white-space: nowrap; }
+
+  /* ── ETHICAL TRADE-OFFS ── */
+  .tradeoff-grid {
+    max-width: var(--max); margin: 0 auto; padding: 0 40px;
+    display: flex; flex-direction: column; gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .tradeoff-row {
+    background: var(--surface); padding: 20px 28px;
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 24px; align-items: center;
+  }
+  .tradeoff-side { font-size: 14px; font-weight: 400; color: var(--text-primary); }
+  .tradeoff-vs {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-tertiary); text-align: center;
+  }
+  .tradeoff-decision {
+    margin-top: 20px;
+    max-width: var(--max); margin-left: auto; margin-right: auto; padding: 0 40px;
+  }
+  .tradeoff-decision p {
+    font-size: 15px; font-style: italic;
+    color: var(--text-secondary); font-weight: 300;
+    padding-left: 20px;
+    border-left: 2px solid var(--sage-mid);
+    line-height: 1.7;
+  }
+
+  /* ── MESSY MIDDLE ── */
+  .messy-grid {
+    max-width: var(--wide); margin: 0 auto; padding: 0 40px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  }
+  .messy-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px;
+  }
+  .messy-tag {
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 12px;
+  }
+  .messy-card h3 {
+    font-family: 'Lora', serif;
+    font-size: 16px; font-weight: 500;
+    line-height: 1.4; margin-bottom: 10px;
+  }
+  .messy-card p { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.75; }
+
+  /* ── IMPACT FINAL ── */
+  .impact-final {
+    background: linear-gradient(150deg, #EFF4F2 0%, #F7F3EF 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 72px 0;
+  }
+  .impact-grid {
+    max-width: var(--wide); margin: 32px auto 0; padding: 0 40px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+  }
+  .impact-cell { background: var(--surface); padding: 28px 24px; }
+  .impact-metric {
+    font-family: 'Lora', serif;
+    font-size: 36px; font-weight: 700;
+    color: var(--text-primary); line-height: 1; margin-bottom: 6px;
+  }
+  .impact-metric-label { font-size: 13px; color: var(--text-secondary); font-weight: 300; line-height: 1.4; }
+  .impact-metric-sub { font-size: 11px; color: var(--text-tertiary); margin-top: 4px; }
+  .impact-pending { font-size: 11px; color: var(--amber); font-style: italic; margin-top: 4px; }
+  .upstream-box {
+    max-width: var(--max); margin: 32px auto 0; padding: 0 40px;
+  }
+  .upstream-inner {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 24px;
+    border-left: 3px solid var(--sage-mid);
+  }
+  .upstream-inner p { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
+
+  /* ── LEARNINGS ── */
+  .learnings-grid {
+    max-width: var(--max); margin: 0 auto; padding: 0 40px;
+    display: flex; flex-direction: column; gap: 28px;
+  }
+  .learning { display: grid; grid-template-columns: 28px 1fr; gap: 16px; align-items: start; }
+  .learning-num {
+    font-family: 'Lora', serif;
+    font-size: 13px; color: var(--text-tertiary); padding-top: 3px;
+  }
+  .learning h3 {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 500;
+    line-height: 1.35; margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .learning p { font-size: 14px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; margin-bottom: 6px; }
+  .learning-since {
+    font-size: 13px; color: var(--text-tertiary);
+    font-style: italic; font-weight: 300; line-height: 1.6;
+    border-top: 1px solid var(--border); padding-top: 10px; margin-top: 8px;
+  }
+
+  /* ── NEXT UP ── */
+  .next-up {
+    border-top: 1px solid var(--border);
+    padding: 56px 40px;
+    max-width: var(--wide); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  }
+  .next-up-left p {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 8px;
+  }
+  .next-up-left h3 { font-family: 'Lora', serif; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+  .next-link {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 500;
+    color: var(--text-primary); text-decoration: none;
+    border: 1px solid var(--border-strong);
+    padding: 10px 20px; border-radius: 40px;
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .next-link:hover { background: var(--text-primary); color: var(--surface); border-color: var(--text-primary); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-name { font-family: 'Lora', serif; font-style: italic; font-size: 15px; color: var(--text-tertiary); }
+  footer a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color var(--transition); }
+  footer a:hover { color: var(--text-primary); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .cs-hero { grid-template-columns: 1fr; padding: 48px 24px 40px; }
+    .impact-box { position: static; }
+    .context-inner { grid-template-columns: repeat(3, 1fr); }
+    .triptych { grid-template-columns: 1fr; }
+    .pyramid-grid { grid-template-columns: 1fr; }
+    .funnel-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .messy-grid { grid-template-columns: 1fr; }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); }
+    .media-grid-2 { grid-template-columns: 1fr; }
+    .next-up { flex-direction: column; align-items: flex-start; }
+    .research-row { grid-template-columns: 1fr; }
+    .tradeoff-row { grid-template-columns: 1fr; }
+    nav { padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav>
+  <a href="index.html" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    All work
+  </a>
+  <a href="#solution" class="nav-jump">↓ Jump to solution</a>
+</nav>
+
+
+<!-- ════════ HERO ════════ -->
+<header class="cs-hero">
+  <div>
+    <p class="cs-hero-tag">Client Experience · Shipped Q2 2026</p>
+    <h1>The billing page that was <em>blocking</em> clients from continuing therapy</h1>
+    <p class="cs-hero-summary">
+      3,200+ billing support contacts a month. A 45-day information blackout after every session. Clients texting their therapists to ask what they owed. My research revealed that billing confusion wasn't a UX problem — it was a clinical access problem. I ran the research, defined the strategy, designed the full experience, and built the case that turned a backlog item into a multi-pod Q2 commitment.
+    </p>
+    <a href="#solution" class="jump-btn">↓ Jump to solution</a>
+  </div>
+
+  <div class="impact-box">
+    <p class="impact-box-label">At a glance</p>
+    <div class="impact-stats">
+      <div class="impact-stat">
+        <span class="impact-number">3,203</span>
+        <span class="impact-desc">billing support contacts/month — the baseline this was built to reduce</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-number">69%</span>
+        <span class="impact-desc">detractor rate among clients who mentioned billing in NPS surveys</span>
+        <span class="impact-sub">Feb 2026 baseline</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-number">6</span>
+        <span class="impact-desc">claim states designed from scratch to cover the full lifecycle</span>
+      </div>
+      <div class="impact-stat">
+        <span class="impact-number">5%</span>
+        <span class="impact-desc">of users in live AI support agent experiment as of Q2 2026</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ════════ CONTEXT STRIP ════════ -->
+<div class="context-strip">
+  <div class="context-inner">
+    <div class="context-cell">
+      <p class="context-key">My role</p>
+      <p class="context-val">Lead Product Designer</p>
+    </div>
+    <div class="context-cell">
+      <p class="context-key">Timeline</p>
+      <p class="context-val">Q1–Q2 2026</p>
+    </div>
+    <div class="context-cell">
+      <p class="context-key">Team</p>
+      <p class="context-val">Florence Vaillant (PM) · Alex Yelskiy + Hash Gari (Eng) · Olivia Laboriel (Dev support)</p>
+    </div>
+    <div class="context-cell">
+      <p class="context-key">Tools</p>
+      <p class="context-val">Figma · Claude · Amplitude · Coda</p>
+    </div>
+    <div class="context-cell">
+      <p class="context-key">Status</p>
+      <p class="context-val">Layer 1 shipped June 9 · Agent in experiment · Layer 3 roadmap</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════ 1. BUSINESS PROBLEM ════════ -->
+<section class="cs-section">
+  <div class="prose">
+    <p class="section-label">The problem</p>
+    <h2>Too many support tickets, unhappy clients, and providers getting pulled into billing conversations that had nothing to do with therapy.</h2>
+    <p>SonderMind was generating 3,203 billing support contacts a month. 69% of clients who mentioned billing in NPS surveys were detractors. Providers were fielding billing questions in therapy sessions. Leadership framed it as a UX cleanup. It wasn't.</p>
+  </div>
+
+  <div class="wide" style="margin-top: 32px;">
+    <div class="triptych">
+      <div class="triptych-cell">
+        <p class="triptych-type biz">Business signal</p>
+        <h3>Billing confusion was a retention problem, not a support cost</h3>
+        <p>3,203 billing support contacts per month. 69% detractor rate among clients who mentioned billing in NPS surveys. Clients who can't understand their charges don't rebook. This was a churn driver disguised as a support ticket problem.</p>
+      </div>
+      <div class="triptych-cell">
+        <p class="triptych-type user">Client experience</p>
+        <h3>A session ends. For 45 days, nothing. Then a charge with no explanation.</h3>
+        <p>Clients logged in after their session and saw a blank page — nothing until a charge processed. When a charge appeared, there was no context: no session it mapped to, no explanation of why $175 wasn't the $30 copay they expected. The blank page wasn't an inconvenience — it was the thing that made clients feel they couldn't trust the company with their money or their care.</p>
+      </div>
+      <div class="triptych-cell">
+        <p class="triptych-type tech">Provider impact</p>
+        <h3>Clients were going to their therapists with billing questions. Providers weren't equipped to answer.</h3>
+        <p>Billing friction was bleeding into the therapeutic relationship at exactly the moment when trust matters most. Providers weren't billing experts. Being pulled in as first-line support wasn't fair to them — or to clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ 2. DISCOVERY ════════ -->
+<section class="cs-section">
+  <div class="prose">
+    <p class="section-label">Discovery</p>
+    <h2>Learning from SMEs, mapping the client experience, and churning the support data with AI.</h2>
+    <p>Before designing anything, I needed to understand what "confused" actually meant and whether a better page would even solve it. Multiple XFN teams were already proposing fixes. None of them were wrong — but most were treating symptoms as causes.</p>
+  </div>
+
+  <!-- Service blueprint: full width -->
+  <div style="background: var(--surface-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 40px 0; padding: 32px 0;">
+    <div style="max-width: 100%; overflow-x: auto; padding: 0 40px;">
+      <img src="billing screens/image 60.png" alt="The lifecycle of a client — full service blueprint mapping pre-claim and post-claim submission flows across client, provider, and system layers" style="width:100%; min-width:900px; border-radius:8px; display:block;">
+    </div>
+    <p class="media-caption" style="margin-top:16px; padding: 0 40px;">The lifecycle of a client — mapping the full claim journey across client, provider, and system layers to identify where things broke down</p>
+  </div>
+
+  <!-- Workshop FigJam board -->
+  <div style="max-width: var(--wide); margin: 0 auto 40px; padding: 0 40px;">
+    <img src="billing screens/1up · beige-3.png" alt="FigJam workshop board — top billing questions and features, key design changes, and CS team feedback" style="width:100%; border-radius:12px; border:1px solid var(--border); display:block;">
+    <p class="media-caption" style="margin-top:10px;">Cross-functional workshop — surfacing top billing questions, CS team feedback, and key design questions before scope was locked</p>
+  </div>
+
+  <!-- AI synthesis -->
+  <div style="max-width: var(--wide); margin: 0 auto 32px; padding: 0 40px;">
+    <img src="billing screens/2-layer · depth.png" alt="AI-assisted research synthesis — Claude analysis of billing contacts alongside Healing the Ledger research document" style="width:100%; border-radius:12px; border:1px solid var(--border); display:block;">
+    <p class="media-caption" style="margin-top:10px;">AI-assisted data analysis — Claude clustering 3,203 support tickets alongside the research framing. The AI surfaced categories; the root causes required human interrogation on top.</p>
+  </div>
+
+  <div class="wide" style="margin-top: 0;">
+    <div class="research-block">
+
+      <!-- AI quantitative -->
+      <div class="research-method">
+        <p class="research-method-label">Quantitative analysis · 3,203 support tickets + 55 NPS verbatims</p>
+        <h3>AI clustered the data. I interrogated the clusters.</h3>
+        <div class="research-row">
+          <div class="research-col">
+            <p class="research-col-label">Why this method</p>
+            <p>3,203 contacts is too large to read manually without bias. AI-assisted clustering was the only way to get full coverage in the time available. The tradeoff: AI surfaces what clients say, not why — so this required a second pass before the output was usable.</p>
+          </div>
+          <div class="research-col">
+            <p class="research-col-label">What was found</p>
+            <p>Two dominant clusters: "Copay &amp; Payment Confusion" (1,629) and "Card on file errors" (1,442). At surface level: two distinct problems. At root: the same cause — a 45-day information blackout between session and charge.</p>
+          </div>
+          <div class="research-col">
+            <p class="research-col-label">What it didn't answer</p>
+            <p>Volume tells you what people call about, not how frustrated they are. Tickets also undercount — not every confused client files one. Some just stop rebooking.</p>
+          </div>
+        </div>
+        <div class="ai-override-note">
+          <strong>AI override moment:</strong> Claude returned "Copay &amp; Payment Confusion" as the primary driver. I rejected that framing and traced each cluster to its origin event. The actual cause — a 45-day information blackout — doesn't appear as a category because clients don't know that's the problem. They describe the symptom. Naming the root cause was the design decision that made everything else work.
+        </div>
+      </div>
+
+      <!-- Comprehension survey -->
+      <div class="research-method">
+        <p class="research-method-label">Billing comprehension survey</p>
+        <h3>"Covered by insurance" is a phrase that actively misleads clients.</h3>
+        <p style="font-size:15px; font-weight:300; color:var(--text-secondary); line-height:1.75; margin-top:12px;">When providers say they "accept insurance" or are "in-network," clients interpret that as "I won't be charged." They don't have a working model of copays vs. deductibles vs. coinsurance. The #1 ask: be able to contact someone immediately when something is confusing — which directly justified the AI support layer.</p>
+      </div>
+
+      <!-- Competitive analysis -->
+      <div class="research-method">
+        <p class="research-method-label">Competitive analysis · telehealth platforms + insurance portals</p>
+        <h3>Clients already have a mental model for billing. I wanted to meet it, not fight it.</h3>
+        <p style="font-size:15px; font-weight:300; color:var(--text-secondary); line-height:1.75; margin-top:12px;">Most telehealth platforms are payment-first. Traditional insurance portals use EOB format — billed vs. allowed vs. patient responsibility. I reviewed my own EOBs to pressure-test the language. The most useful insight: clients want the breakdown — what insurance covered, what was my portion, why. That became the core of the processed claim card.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ 3. SYNTHESIZING FINDINGS ════════ -->
+<section class="cs-section">
+  <div class="prose">
+    <p class="section-label">Synthesizing findings</p>
+    <h2>Five distinct friction points. One amplifier. And a root cause no one had named.</h2>
+    <p>The data didn't just show what clients were calling about — it revealed a structural problem. The billing page was organized around how the backend worked, not how clients thought. Every friction point traced back to the same source: a 45-day gap between session and charge with no information in between. "Inability to get help" wasn't a sixth problem — it was the thing that turned every other problem into churn.</p>
+  </div>
+
+  <div style="max-width: var(--wide); margin: 32px auto 0; padding: 0 40px;">
+    <img src="billing screens/1up · beige-1.png" alt="Five distinct friction points drive support volume — donut chart showing Insurance Comprehension 36%, Connecting Charge to Service 23%, Pending Charges 20%, Medicare/Complex 14%, Payment Methods 7%" style="width:100%; border-radius:12px; border:1px solid var(--border); display:block;">
+    <p class="media-caption" style="margin-top:10px;">Five friction points driving 3,203 monthly contacts — "Inability to Get Help" identified as the amplifier that turns confusion into churn</p>
+  </div>
+
+  <div class="prose" style="margin-top: 48px;">
+    <p>The synthesis also surfaced a deeper insight from the comprehension survey: the industry language we all use — "your insurance covers this" — was actively creating wrong expectations before clients even reached the billing page. This wasn't a SonderMind problem. It was a systemic language failure we'd need to design around. That finding changed what the billing page needed to do: not just show the amount, but explain the category.</p>
+    <p>Billing anxiety is a care access problem. Clients who are stressed about unexpected charges don't rebook — they disengage. As I framed it when presenting to leadership: billing sits at the base of the hierarchy. You can't build a therapeutic relationship on top of financial uncertainty.</p>
+  </div>
+</section>
+
+
+<!-- ════════ 4. SHARING THE VISION ════════ -->
+<section class="cs-section">
+  <div class="prose">
+    <p class="section-label">Sharing the vision</p>
+    <h2>No UI is complete enough. Restoring financial trust required three layers.</h2>
+    <p>The longer I spent designing claim states, the clearer it became that there would always be a next edge case. Medicare Advantage. EAP billing cycles. VA authorization windows. The answer wasn't designing more states indefinitely — it was a layered strategy. I presented this to leadership as a pyramid: transparency first, then intelligent support, then proactive communication.</p>
+  </div>
+
+  <div style="max-width: var(--wide); margin: 32px auto 40px; padding: 0 40px;">
+    <img src="billing screens/1up · beige-2.png" alt="Restoring Financial Trust pyramid — Layer 1 Visibility (Soon), Layer 2 AI Sophistication (Next), Layer 3 Efficiencies and Communication (Future)" style="width:100%; border-radius:12px; border:1px solid var(--border); display:block;">
+  </div>
+
+  <div class="wide">
+    <div class="pyramid-grid">
+      <div class="pyramid-layer l1">
+        <p class="pyramid-layer-num">Layer 1</p>
+        <h3>Transparency</h3>
+        <p>Redesign the billing page from payment ledger to claim-first session history. Every session visible from the moment a claim is submitted. Charge type labels. Insurance coverage breakdown. Payment method where clients need it.</p>
+        <span class="pyramid-badge badge-shipped">Shipped June 9</span>
+      </div>
+      <div class="pyramid-layer l2">
+        <p class="pyramid-layer-num">Layer 2</p>
+        <h3>Intelligent support</h3>
+        <p>A context-aware AI support agent — available 24/7, educational, connected to the client's actual claim and insurance data. Resolves questions before they become support tickets.</p>
+        <span class="pyramid-badge badge-exp">In experiment (5% of users)</span>
+      </div>
+      <div class="pyramid-layer l3">
+        <p class="pyramid-layer-num">Layer 3</p>
+        <h3>Proactive communication</h3>
+        <p>Eliminate upstream billing confusion before it generates a contact at all. Year-end insurance reminders. Proactive outreach when claims take longer than expected.</p>
+        <span class="pyramid-badge badge-roadmap">Roadmap — leadership aligned</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ 5. DESIGNS — PHASE 1 ════════ -->
+<section class="cs-section" id="solution">
+  <div class="prose" style="margin-bottom: 40px;">
+    <p class="section-label">Designs — Phase 1</p>
+    <h2>A billing page organized around sessions, not payments</h2>
+    <p>The billing page is now claim-first. Every session is visible from the moment a claim is submitted — not when money moves. Six claim states were designed from scratch to cover the full lifecycle.</p>
+  </div>
+
+  <div class="media-frame" style="margin-bottom: 40px;">
+    <img src="billing screens/hero + detail.png" alt="Before and after — old payment-first billing page versus new claim-first billing page with full breakdown" style="width:100%; border-radius:12px; border:1px solid var(--border); display:block;">
+    <p class="media-caption">Before and after — the old payment-ledger page versus the new claim-first session history</p>
+  </div>
+
+  <!-- Claim states table -->
+  <div class="wide" style="margin-bottom: 56px;">
+    <table class="claim-states">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>What it shows</th>
+          <th>Design note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Processing</td>
+          <td>Claim submitted, insurance review in progress. Session visible immediately after claim submission.</td>
+          <td>No timeline visualization — engineering cut this. Status label carries what the animation was supposed to communicate.</td>
+        </tr>
+        <tr>
+          <td>Processed</td>
+          <td>Full breakdown: amount billed, insurance covered, charge type label (Copay / Coinsurance / Deductible), patient responsibility.</td>
+          <td>The charge type label is the most important single design decision — it answers the question clients were calling about.</td>
+        </tr>
+        <tr>
+          <td>Action Required</td>
+          <td>Specific ask, one direct path to resolve.</td>
+          <td>One action per card. Too many options at a moment of anxiety is its own failure mode.</td>
+        </tr>
+        <tr>
+          <td>Denied</td>
+          <td>Denial reason, appeal path.</td>
+          <td>Denial reason language required careful handling — worked with RevOps on approved language before design was finalized.</td>
+        </tr>
+        <tr>
+          <td>Paid</td>
+          <td>Receipt-style confirmation. Definitively closed.</td>
+          <td>The end state clients need to see to trust the system worked.</td>
+        </tr>
+        <tr>
+          <td>Upcoming</td>
+          <td>Estimated cost before session.</td>
+          <td>The anxiety lives before the charge, not after. This is where transparency matters most.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Annotation 1 -->
+  <div class="annotation-row" style="margin-bottom: 56px;">
+    <div>
+      <p class="annotation-number">01</p>
+      <p class="annotation-title">The charge type label answers the question clients were calling about</p>
+      <p class="annotation-desc">Clients were calling because they didn't understand why $175 wasn't the $30 copay they expected. The charge type label — Copay / Coinsurance / Deductible — closes that gap. The comprehension survey revealed that "covered by insurance" was actively creating wrong expectations. This label is the correction.</p>
+    </div>
+    <img src="billing screens/1up · gradient.png" alt="Billing and payment history page showing a processed claim with full breakdown" style="width:100%; border-radius:10px; border:1px solid var(--border); display:block;">
+  </div>
+
+  <!-- Annotation 2 -->
+  <div class="annotation-row" style="margin-bottom: 56px;">
+    <div>
+      <p class="annotation-number">02</p>
+      <p class="annotation-title">Pending claims are visible from day one</p>
+      <p class="annotation-desc">Previously nothing appeared until a charge processed — up to 45 days of silence. Now every session shows a claim card the moment it's submitted. Clients can see their session is in the system, even before insurance adjudicates. This alone addressed 20% of support contacts — the "was my session even recorded?" calls.</p>
+      <p class="annotation-cost">Engineering constraint: no timeline visualization — the state machine required more backend plumbing than justified at launch. A status label does the work the animation was supposed to do.</p>
+    </div>
+    <img src="billing screens/Improved billing - Pending.png" alt="Billing page showing pending claim state" style="width:100%; border-radius:10px; border:1px solid var(--border); display:block;">
+  </div>
+
+  <!-- Annotation 3 -->
+  <div class="annotation-row" style="margin-bottom: 56px;">
+    <div>
+      <p class="annotation-number">03</p>
+      <p class="annotation-title">The full picture, across device sizes</p>
+      <p class="annotation-desc">The redesign needed to work across desktop and mobile — clients check their billing on both. The claim card layout stacks cleanly on mobile without losing the charge breakdown. EAP and VA clients, who previously saw an empty page, now see sessions with explicit "$0 — Covered" status. Payment method is surfaced directly on relevant claim cards with a direct update link, eliminating 117+ monthly contacts from clients unable to find where to update their card.</p>
+    </div>
+    <img src="billing screens/3up · dark.png" alt="Three-screen billing page overview showing desktop and mobile views" style="width:100%; border-radius:10px; border:1px solid var(--border); display:block;">
+  </div>
+</section>
+
+
+<!-- ════════ 6. DESIGNS — PHASE 2 ════════ -->
+<section class="cs-section">
+  <div class="prose" style="margin-bottom: 40px;">
+    <p class="section-label">Designs — Phase 2</p>
+    <h2>An AI support agent as the safety net above the UI</h2>
+    <p>The #1 ask in the comprehension survey was immediate access to someone who could explain charges. No matter how complete the billing page is, some questions need conversation — because insurance is too variable, and because anxiety at 10pm doesn't wait for business hours.</p>
+  </div>
+
+  <div class="annotation-row" style="margin-bottom: 40px;">
+    <div>
+      <p class="annotation-number">04</p>
+      <p class="annotation-title">Context-aware, educational, available 24/7</p>
+      <p class="annotation-desc">The agent sits between the static billing page and a human support agent — catching the questions the UI can't fully answer. It's designed to be context-aware (connected to the client's actual claim and insurance data), educational (able to explain what a deductible is in plain language), and always available. 60% of billing questions are educational and can be fully resolved without human escalation.</p>
+    </div>
+    <img src="billing screens/1up · beige.png" alt="AI Agents provide instant context and education — diagram showing the agent layer between static design and human support" style="width:100%; border-radius:10px; border:1px solid var(--border); display:block;">
+  </div>
+
+  <!-- Agent chat screens: full width stacked -->
+  <div style="max-width: var(--wide); margin: 0 auto 40px; padding: 0 40px; display:flex; flex-direction:column; gap:24px;">
+    <div>
+      <img src="billing screens/Improved billing - Pending-1.png" alt="Billing page with AI agent chat open — client asking about insurance change" style="width:100%; border-radius:10px; border:1px solid var(--border); display:block;">
+      <p class="media-caption" style="margin-top:8px;">Client asks about a recent insurance change — agent responds with context about the pending claim</p>
+    </div>
+    <div>
+      <img src="billing screens/Improved billing - Pending-2.png" alt="AI agent guiding client through insurance card upload" style="width:100%; border-radius:10px; border:1px solid var(--border); display:block;">
+      <p class="media-caption" style="margin-top:8px;">Agent guides client through updating their insurance card — resolving the issue without a support ticket</p>
+    </div>
+    <div>
+      <img src="billing screens/image 67.png" alt="SonderMind portal with Sonder AI widget entry point" style="width:100%; border-radius:10px; border:1px solid var(--border); display:block;">
+      <p class="media-caption" style="margin-top:8px;">Agent entry point — surfaced in the portal as Sonder AI, accessible from the billing page</p>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>The agent launched with general FAQ capability first — not claims-connected responses. An agent that confidently answers a billing question incorrectly is worse than no agent. The agent earns personalization by being reliable at the general level first. Currently live for 5% of users (~600 people); next iteration connects it to real claim and insurance data.</p>
+  </div>
+</section>
+
+
+<!-- ════════ IMPACT ════════ -->
+<section class="impact-final">
+  <div style="max-width: var(--wide); margin: 0 auto; padding: 0 40px;">
+    <p class="section-label">Results</p>
+    <h2 style="font-family: 'Lora', serif; font-size: 28px; font-weight: 700; letter-spacing: -0.02em; max-width: 620px;">
+      Layer 1 shipped June 9. The 60-day measurement window hasn't closed — here's what we're tracking and what already changed.
+    </h2>
+  </div>
+
+  <div class="impact-grid">
+    <div class="impact-cell">
+      <p class="impact-metric">3,203</p>
+      <p class="impact-metric-label">Billing support contacts/month</p>
+      <p class="impact-metric-sub">Feb 2026 baseline</p>
+    </div>
+    <div class="impact-cell">
+      <p class="impact-metric">69%</p>
+      <p class="impact-metric-label">Detractor rate on billing NPS</p>
+      <p class="impact-metric-sub">Feb 2026 baseline — primary improvement signal</p>
+    </div>
+    <div class="impact-cell">
+      <p class="impact-metric">≥10%</p>
+      <p class="impact-metric-label">Reduction target in billing care coordination cases</p>
+      <p class="impact-metric-sub">Defined success threshold, 60-day window</p>
+    </div>
+    <div class="impact-cell">
+      <p class="impact-metric">[STAT]</p>
+      <p class="impact-metric-label">Billing care coordination case reduction</p>
+      <p class="impact-pending">Add at 30 and 60 days post June 9 launch</p>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ════════ LEARNINGS ════════ -->
+<section class="cs-section">
+  <div class="prose" style="margin-bottom: 40px;">
+    <p class="section-label">Learnings</p>
+    <h2>What I'd do differently, and what I'd fight to keep</h2>
+  </div>
+
+  <div class="learnings-grid">
+    <div class="learning">
+      <span class="learning-num">01</span>
+      <div>
+        <h3>AI output is a starting point, not an answer</h3>
+        <p>Claude clustered 3,203 tickets and surfaced "Copay & Payment Confusion" as the top problem. I rejected that framing. The actual cause — a 45-day information blackout — doesn't appear as a category because clients don't know to name it. Interrogating the AI's output instead of accepting it is what turned this from a copy fix into an architectural redesign.</p>
+      </div>
+    </div>
+    <div class="learning">
+      <span class="learning-num">02</span>
+      <div>
+        <h3>Design authority requires domain depth</h3>
+        <p>Multiple XFN teams arrived with symptom-level solutions before the research was done. I used the research to redirect those conversations — not to dismiss the ideas, but to place them in the right order relative to root causes. You can only do that credibly if you know the domain well enough to say "we're solving the wrong thing" and be believed.</p>
+        <div class="learning-since">Since this project, I ask one question before any scoping conversation: "Are we treating a cause or a symptom?"</div>
+      </div>
+    </div>
+    <div class="learning">
+      <span class="learning-num">03</span>
+      <div>
+        <h3>Know which fights are worth having</h3>
+        <p>I held firm on inverting the data model when engineering pushed back — a claim-first UI on a payment-first backend is a visual trick, not a fix. But I accepted the cut of the claim timeline visualization and VA/EAP authorization data without hesitation. There's a real difference between the architectural decision that makes the system work and the features that can ship in a fast follow. The skill is knowing which is which before the conversation starts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ NEXT CASE STUDY ════════ -->
+<div class="next-up">
+  <div class="next-up-left">
+    <p>Next case study</p>
+    <h3>Closing the loop: giving clients visibility into their own progress in therapy</h3>
+  </div>
+  <a href="case-study-therapy-journey.html" class="next-link">Read it →</a>
+</div>
+
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <span class="footer-name">Julia</span>
+  <a href="index.html">← Back to all work</a>
+</footer>
+
+</body>
+</html>

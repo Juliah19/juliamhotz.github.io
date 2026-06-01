@@ -1,0 +1,468 @@
+<!--
+  ╔══════════════════════════════════════════════════════════════════╗
+  ║  WORKING DRAFT — NOT READY TO PUBLISH                           ║
+  ╠══════════════════════════════════════════════════════════════════╣
+  ║  Content to update before publishing:                           ║
+  ║  · GIF/screenshot thumbnails for all project cards             ║
+  ║  · LinkedIn, Resume, and email links in footer                  ║
+  ║  · Case study card links (href="#") — update to real paths      ║
+  ║  · "Cool things I'm doing lately" — update as work evolves      ║
+  ║  · Hero subtitle copy — review for accuracy/voice              ║
+  ║  · Second work card is placeholder — replace with real project  ║
+  ╚══════════════════════════════════════════════════════════════════╝
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julia Hotzinger — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:#F8F7F2; --surface:#FFFFFF; --surface-2:#F2F0EA;
+    --text-0:#0A0907; --text-primary:#18160E; --text-secondary:#2E2B24; --text-tertiary:#7A756C;
+    --terra:#2B3270; --terra-mid:#5560A0; --terra-light:#E4E6F5; --terra-subtle:#F2F3FA;
+    --sage:#C03A6A; --sage-light:#FAE0EC; --sage-mid:#D480A0;
+    --amber:#B8891E; --amber-light:#F5EDD8;
+    --border:#E2DDD7; --border-strong:#C4BDB5;
+    --transition:0.18s ease;
+    --max:1100px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── INNER WRAPPER ── */
+  .inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: block;
+    width: 20px; height: 1px; background: var(--border-strong);
+  }
+
+  /* ── HERO ── */
+  .hero { padding: 72px 40px 60px; max-width: var(--max); margin: 0 auto; }
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 700; line-height: 1.08;
+    letter-spacing: -0.025em;
+    color: var(--text-0); margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: italic; color: var(--terra); }
+  .hero-sub {
+    font-size: 17px; font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 600px; line-height: 1.75;
+    margin-bottom: 32px;
+  }
+  .hero-cta-group { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 600;
+    color: var(--surface); background: var(--text-0);
+    padding: 10px 22px; border-radius: 40px;
+    text-decoration: none;
+    transition: background var(--transition);
+  }
+  .btn-primary:hover { background: var(--terra); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 500;
+    color: var(--text-primary);
+    border: 1px solid var(--border-strong);
+    padding: 10px 22px; border-radius: 40px;
+    text-decoration: none;
+    transition: background var(--transition), border-color var(--transition);
+  }
+  .btn-secondary:hover { background: var(--text-primary); color: var(--surface); border-color: var(--text-primary); }
+
+  /* ── WORK SECTION ── */
+  .work-section { padding: 56px 40px; border-top: 1px solid var(--border); max-width: var(--max); margin: 0 auto; }
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+
+  .p-card {
+    background: var(--surface); border: 1px solid var(--border);
+    overflow: hidden; display: flex; flex-direction: column;
+    position: relative; text-decoration: none;
+    transition: border-color var(--transition);
+  }
+  .p-card:hover { border-color: var(--border-strong); }
+  .p-card:first-child  { border-radius: 10px 0 0 0; }
+  .p-card:nth-child(2) { border-radius: 0 10px 0 0; }
+  .p-card:nth-last-child(2) { border-radius: 0 0 0 10px; }
+  .p-card:last-child   { border-radius: 0 0 10px 0; }
+
+  .p-thumb {
+    width: 100%; aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+    font-style: italic; font-size: 13px; color: var(--text-tertiary);
+    padding: 20px; text-align: center;
+  }
+  .p-cbody { padding: 20px 22px 56px; flex: 1; display: flex; flex-direction: column; }
+  .p-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .p-tag {
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--terra); background: var(--terra-light);
+    padding: 2px 9px; border-radius: 40px;
+  }
+  .p-tag.pk { color: var(--sage); background: var(--sage-light); }
+  .p-tag.am { color: var(--amber); background: var(--amber-light); }
+  .p-yr { font-size: 10px; font-weight: 700; color: var(--text-tertiary); }
+  .p-ctitle {
+    font-family: 'Lora', serif;
+    font-size: 17px; font-weight: 600;
+    line-height: 1.25; color: var(--text-primary); margin-bottom: 10px;
+  }
+  .p-cdesc { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.65; flex: 1; margin-bottom: 16px; }
+  .p-impact { display: flex; gap: 20px; padding-top: 14px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .p-inum { font-family: 'Lora', serif; font-size: 20px; font-weight: 700; color: var(--text-0); line-height: 1; }
+  .p-ilbl { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-tertiary); margin-top: 2px; }
+  .p-arrow {
+    position: absolute; bottom: 20px; right: 20px;
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-tertiary); font-size: 12px;
+    transition: background var(--transition), border-color var(--transition), color var(--transition);
+  }
+  .p-card:hover .p-arrow { background: var(--text-primary); border-color: var(--text-primary); color: var(--surface); }
+
+  /* ── VALUES ── */
+  .values-section {
+    background: linear-gradient(160deg, var(--sage-light) 0%, #F4F0EB 60%, var(--bg) 100%);
+    padding: 56px 40px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .values-inner { max-width: var(--max); margin: 0 auto; }
+  .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .v-icon {
+    width: 32px; height: 32px; border-radius: 7px;
+    background: var(--surface); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--terra); margin-bottom: 12px;
+  }
+  .v-name { font-size: 14px; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: 6px; }
+  .v-desc { font-size: 13px; font-weight: 300; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ── AI / COOL THINGS ── */
+  .ai-section { padding: 56px 40px; border-top: 1px solid var(--border); max-width: var(--max); margin: 0 auto; }
+  .ai-title {
+    font-family: 'Lora', serif;
+    font-size: 24px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--text-0); margin-bottom: 24px;
+  }
+  .ai-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .ai-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 6px;
+    position: relative; overflow: visible;
+    cursor: pointer;
+    transition: border-color var(--transition);
+  }
+  .ai-card:hover { border-color: var(--border-strong); }
+  .ai-lbl { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); }
+  .ai-tit { font-size: 14px; font-weight: 700; line-height: 1.3; color: var(--text-primary); }
+  .ai-desc { font-size: 13px; color: var(--text-secondary); font-weight: 300; line-height: 1.55; }
+
+  /* ── ABOUT ── */
+  .about-section {
+    padding: 56px 40px;
+    border-top: 1px solid var(--border);
+    max-width: var(--max); margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start;
+  }
+  .about-h2 {
+    font-family: 'Lora', serif;
+    font-size: 24px; font-weight: 700;
+    line-height: 1.15; letter-spacing: -0.02em;
+    color: var(--text-0); margin-bottom: 16px;
+  }
+  .about-h2 em { font-style: italic; color: var(--terra); }
+  .about-p { font-size: 14px; font-weight: 300; color: var(--text-secondary); line-height: 1.75; margin-bottom: 12px; }
+  .detail-row {
+    display: flex; gap: 14px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-key {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+    color: var(--text-tertiary); min-width: 88px; padding-top: 2px;
+  }
+  .detail-val { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 100%;
+  }
+  .footer-name { font-family: 'Lora', serif; font-style: italic; font-size: 15px; color: var(--text-tertiary); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color var(--transition); }
+  .footer-links a:hover { color: var(--text-primary); }
+
+  /* ── EMOJI BURST ── */
+  @keyframes floatUp {
+    0%   { transform: translateY(0) scale(1); opacity: 1; }
+    60%  { transform: translateY(-52px) scale(1.25); opacity: 1; }
+    100% { transform: translateY(-90px) scale(0.9); opacity: 0; }
+  }
+  .emoji-burst {
+    position: absolute; pointer-events: none;
+    font-size: 28px; line-height: 1;
+    animation: floatUp 1s cubic-bezier(0.22,1,0.36,1) forwards;
+    z-index: 100;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 800px) {
+    .hero { padding: 48px 24px 44px; }
+    .work-section, .ai-section, .about-section { padding-left: 24px; padding-right: 24px; }
+    .values-section { padding-left: 24px; padding-right: 24px; }
+    .work-grid { grid-template-columns: 1fr; }
+    .p-card:first-child, .p-card:nth-child(2),
+    .p-card:nth-last-child(2), .p-card:last-child { border-radius: 10px; }
+    .values-grid { grid-template-columns: 1fr 1fr; }
+    .ai-grid { grid-template-columns: 1fr; }
+    .about-section { grid-template-columns: 1fr; gap: 32px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <p class="hero-eyebrow">Julia Hotzinger · Product Designer · Healthcare UX</p>
+  <h1>Designing for the moments<br>that <em>matter</em></h1>
+  <p class="hero-sub">
+    I'm Julia! I thrive working in complex systems and to craft dependable, user-friendly interfaces. My expertise lies in addressing essential human needs by creating intuitive experiences out of intricate technical landscapes. I'm currently at SonderMind, helping to improve access to care and mental health outcomes.
+  </p>
+  <div class="hero-cta-group">
+    <a href="#work" class="btn-primary">See my work ↓</a>
+    <a href="#about" class="btn-secondary">About me</a>
+  </div>
+</section>
+
+
+<!-- ════════ WORK ════════ -->
+<section class="work-section" id="work">
+  <p class="section-label">Selected work</p>
+  <div class="work-grid">
+
+    <!-- Card 1: Billing Revamp -->
+    <a href="case-study-client-billing-revamp.html" class="p-card">
+      <div class="p-thumb" style="background: linear-gradient(140deg, var(--terra-subtle), var(--terra-light));">
+        Screenshot / GIF placeholder:<br>billing page claim card
+      </div>
+      <div class="p-cbody">
+        <div class="p-meta">
+          <span class="p-tag">Client Experience · Billing</span>
+          <span class="p-yr">2026</span>
+        </div>
+        <p class="p-ctitle">Restoring financial trust as the foundation for continued care</p>
+        <p class="p-cdesc">3,200+ billing contacts a month. A 45-day information blackout after every session. I ran the research that reframed a UX cleanup as a retention problem, then designed a three-layer strategy — a new billing page, an AI support agent, and a proactive communication roadmap — to close the trust gap.</p>
+        <div class="p-impact">
+          <div><p class="p-inum">3,203</p><p class="p-ilbl">Contacts/month baseline</p></div>
+          <div><p class="p-inum">69%</p><p class="p-ilbl">Billing NPS detractors</p></div>
+          <div><p class="p-inum">6</p><p class="p-ilbl">Claim states designed</p></div>
+        </div>
+      </div>
+      <div class="p-arrow">↗</div>
+    </a>
+
+    <!-- Card 2: Therapy Journey -->
+    <a href="case-study-therapy-journey.html" class="p-card">
+      <div class="p-thumb" style="background: linear-gradient(140deg, var(--terra-subtle), #E4E6F5);">
+        <img src="assessment screen/TJ - landing page.png" alt="Therapy Journey overview page" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+      </div>
+      <div class="p-cbody">
+        <div class="p-meta">
+          <span class="p-tag" style="background:var(--terra-light);color:var(--terra);">MBC · Client &amp; Provider Portal</span>
+          <span class="p-yr">2021–22</span>
+        </div>
+        <p class="p-ctitle">Closing the loop: giving clients visibility into their own progress in therapy</p>
+        <p class="p-cdesc">Designed Therapy Journey — SonderMind's first client-facing view of clinical assessment data — and the parallel provider improvements that made measurement-based care work on both sides.</p>
+        <div class="p-impact">
+          <div><p class="p-inum">↑ 31.6%</p><p class="p-ilbl">CQ completion rate peak</p></div>
+          <div><p class="p-inum">7×</p><p class="p-ilbl">volume growth, rate held</p></div>
+        </div>
+      </div>
+      <div class="p-arrow">↗</div>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ════════ VALUES ════════ -->
+<section class="values-section">
+  <div class="values-inner">
+    <p class="section-label">Values I hold</p>
+    <div class="values-grid">
+      <div>
+        <div class="v-icon">
+          <svg width="15" height="15" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 6v4l2.5 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="v-name">Healthcare design is a moral responsibility</p>
+        <p class="v-desc">When users are scared, in pain, or lost in a system they don't understand, a bad interaction has real consequences. I carry that weight into every decision.</p>
+      </div>
+      <div>
+        <div class="v-icon">
+          <svg width="15" height="15" viewBox="0 0 18 18" fill="none">
+            <path d="M3 5h12M3 9h8M3 13h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="v-name">Words are design decisions</p>
+        <p class="v-desc">The button label, the error message, the empty state — they're as consequential as any layout choice. I write everything I ship.</p>
+      </div>
+      <div>
+        <div class="v-icon">
+          <svg width="15" height="15" viewBox="0 0 18 18" fill="none">
+            <circle cx="6" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 6l-1.5 2.5M9 12l1.5-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="v-name">Design and engineering should share the problem</p>
+        <p class="v-desc">The best work I've been part of happened when design and engineering co-owned the challenge from the start — not when I handed over a spec.</p>
+      </div>
+      <div>
+        <div class="v-icon">
+          <svg width="15" height="15" viewBox="0 0 18 18" fill="none">
+            <path d="M9 2l1.8 3.6L15 6.4l-3 2.9.7 4.1L9 11.4l-3.7 2 .7-4.1-3-2.9 4.2-.8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="v-name">Equity isn't a feature — it's the baseline</p>
+        <p class="v-desc">In healthcare, who gets access to a good experience determines who gets access to care. Accessible, inclusive design isn't a stretch goal. It's the job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ COOL THINGS ════════ -->
+<section class="ai-section">
+  <p class="ai-title">Cool things I'm doing lately</p>
+  <div class="ai-grid">
+    <div class="ai-card" data-label="AI-assisted research">
+      <span class="ai-lbl">AI-assisted research</span>
+      <p class="ai-tit">Synthesizing 3,200 support tickets to find the root cause everyone else missed</p>
+      <p class="ai-desc">Used Claude to cluster at scale, then interrogated every cluster manually. The AI's first answer was wrong. The second one changed the product direction.</p>
+    </div>
+    <div class="ai-card" data-label="Case study drafting">
+      <span class="ai-lbl">Case study drafting</span>
+      <p class="ai-desc" style="font-size:13px;">Built a custom skill that pulls project context from Jira, Coda, and Slack, then drafts portfolio case studies with multi-agent review. Cuts drafting time from days to hours.</p>
+      <p class="ai-tit">Custom skill for portfolio case study drafting with 5-perspective review</p>
+    </div>
+    <div class="ai-card" data-label="Vibe-coded prototypes">
+      <span class="ai-lbl">Vibe-coded prototypes</span>
+      <p class="ai-tit">Building interactive HTML prototypes with Claude Code to test ideas before Figma</p>
+      <p class="ai-desc">Pressure-testing flows in working code — not static mocks — gets to real feedback two weeks earlier in the design cycle.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ ABOUT ════════ -->
+<section class="about-section" id="about">
+  <div>
+    <h2 class="about-h2">Designed for <em>humans</em><br>in the hardest moments.</h2>
+    <p class="about-p">I'm a product designer specializing in healthcare UX — the kind where the stakes are real, the systems are complex, and the users are often scared, confused, or in pain.</p>
+    <p class="about-p">I think in systems, sweat the copy, and genuinely enjoy the edge cases. I also think accessible design and beautiful design are the same thing.</p>
+    <p class="about-p">Right now I'm most interested in how AI can make healthcare navigation less brutal — not by replacing human judgment, but by handling the things that shouldn't require it.</p>
+  </div>
+  <div>
+    <div class="detail-row">
+      <span class="detail-key">Currently</span>
+      <span class="detail-val">Senior Product Designer · SonderMind</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Focus areas</span>
+      <span class="detail-val">AI product UX, provider tooling, billing &amp; insurance flows, design systems</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Tools</span>
+      <span class="detail-val">Figma, Claude Code, Maze, Amplitude, Pendo, Coda, Jira</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Cares about</span>
+      <span class="detail-val">Accessibility, typography, systems thinking, healthcare equity</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Based in</span>
+      <span class="detail-val">Portland, OR</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <span class="footer-name">Julia Hotzinger</span>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/juliamhotz/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+
+<script>
+  const sets = {
+    'AI-assisted research':   ['🧠','🔬','💡','📊','🤓'],
+    'Case study drafting':    ['✍️','📝','✨','🗂️','💫'],
+    'Vibe-coded prototypes':  ['🚀','⚡','🛸','💻','🎯'],
+  };
+  document.querySelectorAll('.ai-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const pool = sets[card.dataset.label] || ['✨'];
+      const count = 2 + Math.floor(Math.random() * 2);
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const em = document.createElement('span');
+          em.className = 'emoji-burst';
+          em.textContent = pool[Math.floor(Math.random() * pool.length)];
+          em.style.left = (16 + Math.random() * (card.offsetWidth - 48)) + 'px';
+          em.style.top  = (card.offsetHeight * 0.3 + Math.random() * card.offsetHeight * 0.3) + 'px';
+          card.appendChild(em);
+          setTimeout(() => em.remove(), 1100);
+        }, i * 90);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
