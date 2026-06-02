@@ -414,53 +414,25 @@
   .media-half img {
     width: 100%; display: block;
   }
-  /* Mobile screenshot wrapper — adds a colored bg + padding for portrait screens */
   .mobile-wrap {
-    background: var(--terra-subtle);
-    border-radius: 16px;
-    padding: 24px 32px;
     display: flex; justify-content: center; align-items: flex-start;
-    border: 1px solid var(--terra-light);
     overflow: hidden;
   }
   .mobile-wrap img {
     width: 100%; max-width: 320px;
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
     display: block;
   }
-  /* Desktop screenshot — fills the frame */
   .desktop-wrap {
-    border-radius: 12px;
-    border: 1px solid var(--border);
     overflow: hidden;
-    background: var(--surface-2);
   }
   .desktop-wrap img {
     width: 100%; display: block;
   }
-  /* Design artifact — light bg, padding */
-  .artifact-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-    overflow: hidden;
-  }
-  .artifact-wrap img {
-    width: 100%; display: block; border-radius: 8px;
-  }
-  /* Multi-mobile row: side-by-side phones */
   .mobile-row {
     display: flex; gap: 16px; justify-content: center; align-items: flex-start;
-    background: var(--terra-subtle);
-    border: 1px solid var(--terra-light);
-    border-radius: 16px; padding: 28px 24px;
   }
   .mobile-row img {
     flex: 1; max-width: 220px; min-width: 0;
-    border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.10);
     display: block;
   }
   .media-caption {
@@ -771,10 +743,80 @@
   </div>
 
   <div class="media-frame" style="margin-top: 40px;">
-    <div class="artifact-wrap">
+    <div class="desktop-wrap">
       <img src="assessment screen/Screenshot 2026-06-01 at 12.19.48 AM.png" alt="Research study prototype showing the CQ flow (GAD-7 questions) on the left and the CCD detail and overview pages on the right — the prototype used in Round 2 usability testing">
     </div>
     <p class="media-caption">Round 2 test prototype — CQ flow (left) and Therapy Journey detail + overview (right)</p>
+  </div>
+
+  <div class="media-frame" style="margin-top: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Research-overview.png" alt="Research overview">
+    </div>
+  </div>
+
+  <div class="media-frame" style="margin-top: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Research1.png" alt="Research finding 1">
+    </div>
+  </div>
+
+  <div class="media-frame" style="margin-top: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Research2.png" alt="Research finding 2">
+    </div>
+  </div>
+
+  <div class="media-frame" style="margin-top: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Research3.png" alt="Research finding 3">
+    </div>
+  </div>
+</section>
+
+
+<!-- SOLUTION EXPLORATION -->
+<section class="cs-section">
+  <div class="prose" style="margin-bottom: 40px;">
+    <p class="section-label">Solution exploration</p>
+    <h2>Early design directions</h2>
+  </div>
+
+  <div class="media-frame" style="margin-bottom: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Solution1.png" alt="Solution exploration 1">
+    </div>
+  </div>
+
+  <div class="media-frame" style="margin-bottom: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Solution2.png" alt="Solution exploration 2">
+    </div>
+  </div>
+
+  <div class="media-frame" style="margin-bottom: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Solution3.png" alt="Solution exploration 3">
+    </div>
+  </div>
+
+  <div class="media-frame" style="margin-bottom: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Solution4.png" alt="Solution exploration 4">
+    </div>
+  </div>
+
+  <div class="media-frame" style="margin-bottom: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Otto mapping.png" alt="Otto mapping — smiley face expressions tied to score ranges for Functional, PHQ-9, and GAD-7 assessments">
+    </div>
+    <p class="media-caption">"Otto" mapping — smiley face expressions tied to score ranges across all three assessment types</p>
+  </div>
+
+  <div class="media-frame">
+    <div class="desktop-wrap">
+      <img src="assessment screen/Prov-Solution1.png" alt="Provider portal solution exploration 1">
+    </div>
   </div>
 </section>
 
@@ -842,14 +884,27 @@
     <p>The design addressed both sides of the broken loop: giving clients visibility into their own progress, and giving providers a more actionable view of the data they were responsible for using.</p>
   </div>
 
+  <!-- Hero shots -->
+  <div class="media-frame" style="margin-bottom: 24px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/GAD-prov.png" alt="Provider portal showing the Assessments tab with a GAD-7 Anxiety detail panel — score history, individual question responses, and trend line">
+    </div>
+    <p class="media-caption">Provider portal — Assessments overview with GAD-7 detail</p>
+  </div>
+
+  <div class="media-frame" style="margin-bottom: 48px;">
+    <div class="desktop-wrap">
+      <img src="assessment screen/GAD-TJ.png" alt="Therapy Journey — GAD-7 anxiety assessment detail page showing trend graph, smiley face, and severity description">
+    </div>
+    <p class="media-caption">Client portal — Therapy Journey GAD-7 detail</p>
+  </div>
+
   <!-- Client portal -->
   <div class="media-frame" style="margin-bottom: 48px;">
-    <div class="mobile-row">
-      <img src="assessment screen/active client with no cqs and assigned.png" alt="Therapy Journey empty state — no assessments completed yet, with assigned check-ins from provider">
-      <img src="assessment screen/TJ - landing page.png" alt="Therapy Journey overview — score cards for Anxiety, Depression, and Day-to-day life assessments">
-      <img src="assessment screen/CQ_Complete.png" alt="Assessment completion confirmation screen — 'Well done, your answers have been sent to your therapist'">
+    <div class="desktop-wrap">
+      <img src="assessment screen/GAD.png" alt="GAD-7 assessment flow — five screens showing the full questionnaire from first question through to the Well done completion screen">
     </div>
-    <p class="media-caption">Therapy Journey: empty state (left), overview with scores (center), and post-completion confirmation (right)</p>
+    <p class="media-caption">What taking an assessment looks like — the GAD-7 flow from first question to completion</p>
   </div>
 
   <div class="annotation-stacked" style="margin-bottom: 56px;">
@@ -858,9 +913,6 @@
       <p class="annotation-title">Plain language over clinical labels</p>
       <p class="annotation-desc">Research consistently told us clients found "PHQ-9" and "GAD-7" alienating. Every label was rewritten in plain language: "Anxiety" not "GAD-7," "Depression" not "PHQ-9." Score descriptions were framed around the client's experience, not a diagnosis. "Everyone experiences anxiety from time to time" instead of "Minimal severity."</p>
       <p class="annotation-cost">Cost: required clinical sign-off on every phrase. Slower to ship, right to do.</p>
-    </div>
-    <div class="mobile-wrap" style="max-width: 360px; margin: 0 auto;">
-      <img src="assessment screen/insight.png" alt="Day-to-day life detail page — trend graph with smiley face and compassionate score description">
     </div>
   </div>
 
@@ -871,9 +923,6 @@
       <p class="annotation-desc">The graph showed the last 6 completed assessments per type. Each point was interactive — clicking surfaced the score, date, and a written description of what that score range typically means. 100% of Round 1 participants had asked for this. Round 2 confirmed it landed.</p>
       <p class="annotation-cost">Cost: only available for clients. The same graph on the provider side was cut from this release — see funnel above.</p>
     </div>
-    <div class="mobile-wrap" style="max-width: 360px; margin: 0 auto;">
-      <img src="assessment screen/Frame 802.png" alt="Anxiety symptoms detail page — trend graph, smiley face, severity description, and Discover section">
-    </div>
   </div>
 
   <div class="annotation-stacked" style="margin-bottom: 56px;">
@@ -883,20 +932,6 @@
       <p class="annotation-desc">The name wasn't cosmetic. "Therapy journey" placed the experience inside the client's ongoing care story, not inside a clinical data system. In Round 2 testing, it resonated on first exposure: "Therapy is a journey right? It's about getting better and improving yourself even if the numbers get worse."</p>
       <p class="annotation-cost">This one I'd fight to keep in any future redesign. Naming is philosophy made visible.</p>
     </div>
-    <div class="artifact-wrap">
-      <img src="assessment screen/Screenshot 2026-06-01 at 12.33.14 AM.png" alt="Design spec showing all four severity states for GAD-7 — Nominal, Mild, Moderate, Severe — with smiley face and copy adapting per state">
-    </div>
-  </div>
-
-  <div class="annotation-stacked" style="margin-bottom: 72px;">
-    <div class="annotation-text">
-      <p class="annotation-number">04</p>
-      <p class="annotation-title">A smiley face tied to every score range</p>
-      <p class="annotation-desc">We mapped an expressive face ("Otto") to each severity band across all three assessment types. The face changes as scores change, giving clients an immediate emotional read before they process any numbers or text. Designing the mapping required aligning on clinical thresholds, copy tone, and visual expression at the same time.</p>
-    </div>
-    <div class="artifact-wrap">
-      <img src="assessment screen/Otto mapping.png" alt="Design artifact mapping smiley face expressions to score ranges for Functional, PHQ-9, and GAD-7 assessments">
-    </div>
   </div>
 
   <!-- Provider portal -->
@@ -905,27 +940,6 @@
       <h2>Provider portal: a leaner MVP, by design</h2>
       <p>The provider side shipped without the trend graph. Providers are trained to read assessment scores directly, and adding a visualization on top of several new CQ types in the same release was too heavy a dev lift. What shipped: score summaries per assessment, differentiation between scheduled and manual sends, and a scoring/interpretation section with clinical context alongside raw scores.</p>
     </div>
-    <div class="media-frame" style="display: flex; flex-direction: column; gap: 24px;">
-      <div>
-        <div class="desktop-wrap">
-          <img src="assessment screen/Screenshot 2026-04-29 at 4.21.14 PM 1.png" alt="Provider portal Assessments tab — score summary cards for Functional, Anxiety, Depression, Therapeutic Alliance, Suicidality, and Well-Being">
-        </div>
-        <p class="media-caption">Assessments tab — score summaries across all active CQ types</p>
-      </div>
-      <div>
-        <div class="desktop-wrap">
-          <img src="assessment screen/Screenshot 2026-04-29 at 4.21.51 PM 1.png" alt="Provider portal — Therapeutic Alliance detail showing subscores, questionnaire responses, and recent score history">
-        </div>
-        <p class="media-caption">Assessment detail — subscores and recent response history</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="media-frame" style="margin-top: 48px;">
-    <div class="artifact-wrap">
-      <img src="assessment screen/GAD.png" alt="GAD-7 assessment flow — five screens showing the full questionnaire from first question through to the Well done completion screen">
-    </div>
-    <p class="media-caption">What taking an assessment looks like — the GAD-7 flow from first question to completion</p>
   </div>
 </section>
 
@@ -1066,7 +1080,7 @@
   - Provider portal solution uses a 2-column media grid
   - Mobile screenshots use terra-subtle colored bg wrapper (mobile-wrap)
   - Desktop/portal screenshots use desktop-wrap (white bg, border)
-  - Design artifacts use artifact-wrap (white bg, padding)
+  - Design artifacts use desktop-wrap (white bg, padding)
   - Three mobile screens shown side-by-side in the client portal hero (empty state, overview, completion)
 
   IMAGES USED:
