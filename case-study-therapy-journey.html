@@ -51,7 +51,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(248,247,243,0.9);
@@ -79,11 +79,11 @@
   }
   .nav-jump:hover { background: var(--sage); }
 
-  /* ── LAYOUT ── */
+  /* LAYOUT */
   .contained { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
   .wide      { max-width: var(--wide); margin: 0 auto; padding: 0 40px; }
 
-  /* ── SECTION RHYTHM ── */
+  /* SECTION RHYTHM */
   .cs-section { padding: 72px 0; border-top: 1px solid var(--border); }
 
   .section-label {
@@ -98,7 +98,7 @@
     width: 20px; height: 1px; background: var(--border-strong);
   }
 
-  /* ── HERO ── */
+  /* HERO */
   .cs-hero {
     padding: 80px 40px 64px;
     max-width: var(--wide); margin: 0 auto;
@@ -134,7 +134,7 @@
   }
   .jump-btn:hover { background: var(--terra); }
 
-  /* ── IMPACT BOX ── */
+  /* IMPACT BOX */
   .impact-box {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -161,7 +161,7 @@
   }
   .impact-desc { font-size: 14px; color: var(--text-secondary); font-weight: 300; }
 
-  /* ── CONTEXT STRIP ── */
+  /* CONTEXT STRIP */
   .context-strip {
     background: var(--surface);
     border-top: 1px solid var(--border);
@@ -184,7 +184,7 @@
   }
   .context-val { font-size: 14px; color: var(--text-primary); line-height: 1.5; }
 
-  /* ── PROSE ── */
+  /* PROSE */
   .prose { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
   .prose h2 {
     font-family: 'DM Sans', sans-serif;
@@ -199,7 +199,7 @@
   }
   .prose strong { font-weight: 600; color: var(--text-primary); }
 
-  /* ── MBC FLYWHEEL ── */
+  /* MBC FLYWHEEL */
   .flywheel-panel {
     background: var(--terra-subtle);
     border: 1px solid var(--terra-light);
@@ -217,7 +217,7 @@
   .flywheel-panel strong { font-weight: 600; color: var(--text-primary); }
   .flywheel-panel em { font-style: italic; }
 
-  /* ── TRIPTYCH ── */
+  /* TRIPTYCH */
   .triptych {
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 1px; background: var(--border);
@@ -253,7 +253,7 @@
     border-left: 2px solid var(--sage-mid);
   }
 
-  /* ── RESEARCH ── */
+  /* RESEARCH */
   .research-rounds {
     display: flex; flex-direction: column; gap: 32px;
     max-width: var(--max); margin: 0 auto; padding: 0 40px;
@@ -314,7 +314,7 @@
   }
   .research-gap strong { font-weight: 600; color: var(--amber); }
 
-  /* ── 50-TO-5 FUNNEL ── */
+  /* 50-TO-5 FUNNEL */
   .funnel-section { padding: 72px 0; border-top: 1px solid var(--border); }
   .funnel-intro {
     max-width: var(--max); margin: 0 auto; padding: 0 40px;
@@ -361,7 +361,7 @@
     font-weight: 300; line-height: 1.65;
   }
 
-  /* ── SOLUTION ANNOTATION ── */
+  /* SOLUTION ANNOTATION */
   .annotation-row {
     max-width: var(--wide); margin: 0 auto; padding: 0 40px;
     display: grid; grid-template-columns: 1fr 1fr;
@@ -394,7 +394,7 @@
     padding-top: 12px; border-top: 1px solid var(--border);
   }
 
-  /* ── MEDIA ── */
+  /* MEDIA */
   .media-frame { max-width: var(--wide); margin: 0 auto; padding: 0 40px; }
   .media-full {
     width: 100%; border-radius: 12px;
@@ -441,7 +441,7 @@
     font-style: italic;
   }
 
-  /* ── MESSY MIDDLE ── */
+  /* MESSY MIDDLE */
   .messy-grid {
     max-width: var(--wide); margin: 0 auto; padding: 0 40px;
     display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
@@ -466,7 +466,7 @@
     font-weight: 300; line-height: 1.75;
   }
 
-  /* ── IMPACT FINAL ── */
+  /* IMPACT FINAL */
   .impact-final {
     background: linear-gradient(150deg, #EFF4F2 0%, #F7F3EF 100%);
     border-top: 1px solid var(--border);
@@ -515,7 +515,7 @@
     font-weight: 300; line-height: 1.65; font-style: italic;
   }
 
-  /* ── LEARNINGS ── */
+  /* LEARNINGS */
   .learnings-grid {
     max-width: var(--max); margin: 0 auto; padding: 0 40px;
     display: flex; flex-direction: column; gap: 24px;
@@ -533,7 +533,7 @@
   }
   .learning p { font-size: 15px; color: var(--text-secondary); font-weight: 300; line-height: 1.7; }
 
-  /* ── NEXT UP + FOOTER ── */
+  /* NEXT UP + FOOTER */
   .next-up {
     border-top: 1px solid var(--border);
     padding: 56px 40px;
@@ -561,7 +561,7 @@
   footer a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color var(--transition); }
   footer a:hover { color: var(--text-primary); }
 
-  /* ── RESPONSIVE ── */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
     .cs-hero { grid-template-columns: 1fr; padding: 48px 24px 40px; }
     .impact-box { position: static; }
@@ -713,7 +713,7 @@
   <div class="research-rounds">
     <div class="research-round">
       <p class="round-label">Round 0 — Behavioral outlier interviews</p>
-      <h3>I started with the clients who were completing 50+ assessments — far above average</h3>
+      <h3>I started with the clients who were completing 50+ assessments, far above average</h3>
       <p>I wanted to understand what made them different, because their behavior was what we were trying to cultivate. Three things consistently came up: their therapist had set the expectation that CQs were part of therapy; they used them for self-reflection between sessions; and therapist follow-up mattered to them. CQ completion wasn't a platform habit. It was a relational one.</p>
     </div>
 
@@ -721,7 +721,7 @@
       <p class="round-label">Round 1 — Unmoderated concept testing · 6 participants</p>
       <h3>100% expected a graph. None of them wanted to feel judged by an app.</h3>
       <ul class="finding-list">
-        <li>Every participant expected some kind of visual showing progress over time — most wanted individual questions broken out, not just a single aggregate score</li>
+        <li>Every participant expected some kind of visual showing progress over time. Most wanted individual questions broken out, not just a single aggregate score</li>
         <li>When symptoms were worsening, participants wanted gentleness and reassurance, not clinical neutrality</li>
         <li>Strong expectation that their therapist was reviewing the data and would bring it up in session</li>
       </ul>
@@ -733,9 +733,9 @@
       <p class="round-label">Round 2 — Moderated usability testing with SonderMind clients · 5 participants</p>
       <h3>The design landed. The language still needed work.</h3>
       <ul class="finding-list">
-        <li>"Therapy journey" as a name resonated immediately — <em>"Therapy is a journey right? It's about getting better, even if the numbers get worse."</em></li>
+        <li>"Therapy journey" as a name resonated immediately: <em>"Therapy is a journey right? It's about getting better, even if the numbers get worse."</em></li>
         <li>The graph was well-received. The smiley face was described as "delightful" and "my smiley face friend"</li>
-        <li>Language around severe symptoms still felt too clinical — validating but not meaningful. <em>"Symptoms feel cold and clinical and reductive to what I'm experiencing."</em></li>
+        <li>Language around severe symptoms still felt too clinical, validating but not meaningful. <em>"Symptoms feel cold and clinical and reductive to what I'm experiencing."</em></li>
         <li>Participants wanted resources for right now, not just at their next session</li>
       </ul>
       <div class="research-gap"><strong>What the research didn't answer:</strong> Round 1 used participants who weren't active SonderMind clients, so we couldn't confirm those expectations held for our actual users until Round 2. The therapist-comment feature that multiple participants asked for didn't make V1 scope. We shipped knowing clients wanted therapist context alongside their data, and we shipped without it.</div>
@@ -818,7 +818,7 @@
 <section class="funnel-section">
   <div class="funnel-intro">
     <p class="section-label">Editorial judgment</p>
-    <h2>What we cut — and why each cut was a real decision</h2>
+    <h2>What we cut, and why each cut was a real decision</h2>
     <p>Every item below was seriously considered. The kills weren't obvious; they were argued for.</p>
   </div>
 
@@ -841,7 +841,7 @@
       <span class="funnel-tag killed-tag">Killed</span>
       <div>
         <p class="funnel-row-title">Question-by-question breakdown in V1</p>
-        <p class="funnel-row-reason">Research strongly surfaced this — clients specifically said they wanted to see individual items, not just aggregate scores. We cut it because the backend scoring model didn't support it yet and the engineering effort would have delayed the whole feature.</p>
+        <p class="funnel-row-reason">Research strongly surfaced this. Clients specifically said they wanted to see individual items, not just aggregate scores. We cut it because the backend scoring model didn't support it yet and the engineering effort would have delayed the whole feature.</p>
       </div>
     </div>
     <div class="funnel-row killed">
@@ -913,15 +913,15 @@
     <div class="annotation-text">
       <p class="annotation-number">02</p>
       <p class="annotation-title">Six-point trend graph with interactive data points</p>
-      <p class="annotation-desc">The graph showed the last 6 completed assessments per type. Each point was interactive — clicking surfaced the score, date, and a written description of what that score range typically means. 100% of Round 1 participants had asked for this. Round 2 confirmed it landed.</p>
-      <p class="annotation-cost">Cost: only available for clients. The same graph on the provider side was cut from this release — see funnel above.</p>
+      <p class="annotation-desc">The graph showed the last 6 completed assessments per type. Each point was interactive. Clicking surfaced the score, date, and a written description of what that score range typically means. 100% of Round 1 participants had asked for this. Round 2 confirmed it landed.</p>
+      <p class="annotation-cost">Cost: only available for clients. The same graph on the provider side was cut from this release. See funnel above.</p>
     </div>
   </div>
 
   <div class="annotation-stacked" style="margin-bottom: 56px;">
     <div class="annotation-text">
       <p class="annotation-number">03</p>
-      <p class="annotation-title">Naming it "Therapy Journey" — not "Assessments"</p>
+      <p class="annotation-title">Naming it "Therapy Journey," not "Assessments"</p>
       <p class="annotation-desc">The name wasn't cosmetic. "Therapy journey" placed the experience inside the client's ongoing care story, not inside a clinical data system. In Round 2 testing, it resonated on first exposure: "Therapy is a journey right? It's about getting better and improving yourself even if the numbers get worse."</p>
       <p class="annotation-cost">This one I'd fight to keep in any future redesign. Naming is philosophy made visible.</p>
     </div>
@@ -952,7 +952,7 @@
     </div>
     <div class="messy-card">
       <p class="messy-tag">MVP debate</p>
-      <h3>The biggest tension wasn't a single feature — it was the right level of data to ship at all</h3>
+      <h3>The biggest tension wasn't a single feature. It was the right level of data to ship at all</h3>
       <p>Scoping conversations with my PM and eng lead kept circling the same question: are we shipping enough to be useful, or so much that we're shipping late and fragile? The graph-vs-no-graph call on the provider side came up multiple times. It took a principled argument, not just a scope call, to close it.</p>
     </div>
     <div class="messy-card">
@@ -1035,14 +1035,14 @@
     <div class="learning">
       <span class="learning-num">02</span>
       <div>
-        <h3>Research found what we designed for — but not what we didn't design</h3>
+        <h3>Research found what we designed for, but not what we didn't design</h3>
         <p>Both rounds surfaced things we could act on. But the research was set up to validate the display approach, not to challenge whether the interaction model itself was right. We knew clients wanted therapist context alongside their data and shipped without it. Worth naming.</p>
       </div>
     </div>
     <div class="learning">
       <span class="learning-num">03</span>
       <div>
-        <h3>The naming was the thing I'd fight to keep</h3>
+        <h3>The naming is what I'd fight to keep</h3>
         <p>"Therapy journey" over "assessments" or "clinical data." "Anxiety" over "GAD-7." These weren't polish. They were a position about who this tool was for and how it should make people feel. In a product full of clinician-facing language that leaked into client surfaces, getting this right mattered. Future iterations that revert to clinical labels will lose something real.</p>
       </div>
     </div>
@@ -1063,45 +1063,6 @@
   <span class="footer-name">Julia</span>
   <a href="index.html">← Back to all work</a>
 </footer>
-
-<!--
-  VISUAL DECISIONS TO VALIDATE:
-  - Color usage follows template exactly (violet = terra, pink = sage, amber = tertiary)
-  - MBC flywheel uses terra-subtle background to distinguish it as background/context
-  - Triptych reframe row spans all 3 columns
-  - Funnel uses a list layout instead of card grid
-  - Provider portal solution uses a 2-column media grid
-  - Mobile screenshots use terra-subtle colored bg wrapper (mobile-wrap)
-  - Desktop/portal screenshots use desktop-wrap (white bg, border)
-  - Design artifacts use desktop-wrap (white bg, padding)
-  - Three mobile screens shown side-by-side in the client portal hero (empty state, overview, completion)
-
-  IMAGES USED:
-  - Client solution hero: active client with no cqs and assigned.png + TJ - landing page.png + CQ_Complete.png
-  - Annotation 01 (plain language): insight.png (Day-to-day life detail)
-  - Annotation 02 (trend graph): Frame 802.png (Anxiety detail with graph)
-  - Annotation 03 (naming): Screenshot 2026-06-01 at 12.33.14 AM.png (GAD-7 severity states spec)
-  - Provider portal: CQ scores.png + active client with completed cqs.png
-  - Research section: Screenshot 2026-06-01 at 12.19.48 AM.png (Round 2 prototype)
-  - Messy middle: Otto mapping.png (smiley face score mapping artifact)
-
-  IMAGES AVAILABLE BUT NOT YET USED (consider for future passes):
-  - Screenshot 2026-06-01 at 12.29.58 AM.png — Depression detail with accessibility annotations
-  - Screenshot 2026-06-01 at 12.33.38 AM.png — All severity states across all 3 types (overview)
-  - Screenshot 2026-06-01 at 12.37.54 AM.png — 3-state client composite + insight panel
-  - Screenshot 2026-06-01 at 12.37.06 AM.png — CQ scorecard grid (all types)
-  - Screenshot 2026-06-01 at 12.40.26 AM.png — Provider CQ card states spec
-  - Screenshot 2026-04-29 at 4.21.14 PM 1.png — Current (2026) provider Assessments tab
-  - Screenshot 2026-04-29 at 4.21.51 PM 1.png — Therapeutic Alliance detail (current)
-  - CQ results.png — "Complete a clinical assessment" provider modal
-  - Q1_filled.png — GAD-7 question in progress (good for research section)
-  - intro.png — CQ intro screen
-
-  STILL NEEDS:
-  - "Next case study" link and title
-  - nav "All work" link (currently portfolio_homepage_v5.html — update if filename differs)
-  - Consider GIFs or video for the graph interaction (clicking data points) if available
--->
 
 </body>
 </html>
